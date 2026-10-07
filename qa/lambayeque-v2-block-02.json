@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-04",
+  "branch": "warma-lambayeque-v2",
+  "baseCommit": "91ed15518af91388670006971ae2246eca1a4d33",
+  "checks": [
+    {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": ""
+    },
+    {
+      "command": "node scripts/verify-warma.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "WARMA verified: legacy backups and drafts preserved, local export roundtrip, clean reset defaults, paused timers, controlled reflection routes, finite closed knot geometry, stable PWA identity."
+    },
+    {
+      "command": "node scripts/verify-onboarding.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: old backup/draft compatibility; returning users preserved; 96 optional preference combinations; late-hour duration; six instruments blocked; real submit callback consent, duplicate guard, storage failure and JSON roundtrip; consent UI and preference controls. Native browser/IndexedDB not simulated as real QA."
+    },
+    {
+      "command": "node scripts/verify-navigation.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: Inicio ↔ Camino / Espejo / Bitácora / Mi jardín, Back, Forward, route reload, empty hash and direct hash changes (production callbacks; simulated browser)."
+    },
+    {
+      "command": "node scripts/verify-focus-duration.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: visible recommended durations including 1 minute; all presets; custom duration; empty, fractional, invalid and out-of-range values cannot start a session (production component)."
+    },
+    {
+      "command": "node scripts/verify-copy.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: Spanish singular/plural (0, 1, 2, 21), quality labels, and legacy English section headings."
+    },
+    {
+      "command": "node scripts/verify-psychometrics.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: 14–70 reference scoring and 70 single-item variations; reverse/mean synthetic fixture; missing, unknown, fractional and out-of-range rejection; 14-item progress and cursor; version isolation; six permission gates and repository blocks; forged result imports rejected; contextual review gate; old backup compatibility; explainable preferences and daily precedence; no new network transport. No clinical or native-browser validation claimed."
+    },
+    {
+      "command": "node scripts/verify-onboarding-flow.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: real callbacks and existing IDB transaction code with deterministic adapter; consent and stale-click guards; save/resume after module reload; Back and optional choices; failure retains data; duplicate submit; discard only draft; no points/timers; known five-minute entry; serial writes and metadata-only broadcast; blocked item preview and no answer controls; semantic/focus targets and CSS constraints at four widths. Native IndexedDB, visual responsive and real keyboard remain unvalidated by this adapter."
+    },
+    {
+      "command": "node scripts/verify-onboarding-motion.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: actual knot Canvas renderer with finite coordinates, load-dependent geometry, DPR capped at 1.35; reduced motion schedules no animation; one RAF loop; hidden-tab suspension; listener/observer/frame cleanup; missing context safe. Synthetic Canvas adapter, not a GPU/device or screenshot test."
+    },
+    {
+      "command": "node scripts/verify-pwa.mjs dist/client/sw.js",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "Production precache paths: 30\nPASS: cache install, activation, network navigation, offline navigation, cached asset, private-route exclusions, cache readiness."
+    }
+  ],
+  "nativeBrowserValidation": "not performed: existing environment policy block",
+  "production": "untouched",
+  "build": {
+    "command": "npm run build",
+    "result": "PASS",
+    "exitCode": 0,
+    "client": true,
+    "rsc": true,
+    "ssr": true,
+    "classification": "SERVER"
+  },
+  "artifactSize": {
+    "jsFiles": 10,
+    "jsBytes": 850825,
+    "jsGzipBytes": 255544,
+    "cssBytes": 251606,
+    "clientBytes": 1241086,
+    "measurement": "on-disk artifact, not observed network/FPS/Core Web Vitals"
+  },
+  "functionalCommit": "72a68b1f93f26eb669995afde21b905952b4f6fe"
+}

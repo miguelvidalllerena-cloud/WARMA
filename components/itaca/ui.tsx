@@ -1,0 +1,22 @@
+'use client';
+import type {ReactNode} from 'react';
+import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from '@/components/ui/select';
+import {RadioGroup,RadioGroupItem} from '@/components/ui/radio-group';
+import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogClose} from '@/components/ui/dialog';
+import {Tooltip,TooltipContent,TooltipTrigger} from '@/components/ui/tooltip';
+import {AlertDialog,AlertDialogContent,AlertDialogTitle,AlertDialogDescription,AlertDialogAction,AlertDialogCancel,AlertDialogFooter} from '@/components/ui/alert-dialog';
+import {ArrowUpRight,Plus,X} from 'lucide-react';
+import {toast} from 'sonner';
+export const notifyError=(e:unknown)=>toast.error(e instanceof Error?e.message:'No se pudo completar la acción.');
+export async function act(fn:()=>Promise<unknown>,message?:string){try{await fn();if(message)toast.success(message);return true;}catch(e){notifyError(e);return false;}}
+export function Pick({value,onChange,options,label}:{value:string;onChange:(v:string)=>void;options:{value:string;label:string}[];label:string}){return <Select value={value} onValueChange={onChange}><SelectTrigger className="field-select" aria-label={label}><SelectValue placeholder={label}/></SelectTrigger><SelectContent>{options.map(o=><SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}</SelectContent></Select>;}
+export function Choices({value,onChange,options,label}:{value:string;onChange:(v:string)=>void;options:string[];label:string}){return <RadioGroup value={value} onValueChange={onChange} aria-label={label} className="choice-group">{options.map(o=><label key={o} className={'choice '+(value===o?'selected':'')}><RadioGroupItem value={o} className="sr-only"/>{o}</label>)}</RadioGroup>;}
+export function Modal({open,onOpen,title,description,children,wide=false,className='',reduced=false,closeDisabled=false}:{open:boolean;onOpen:(v:boolean)=>void;title:string;description?:string;children:ReactNode;wide?:boolean;className?:string;reduced?:boolean;closeDisabled?:boolean}){return <Dialog open={open} onOpenChange={onOpen}><DialogContent showCloseButton={false} data-reduced={reduced||undefined} className={'itaca-dialog '+(wide?'wide ':'')+className}><DialogTitle>{title}</DialogTitle><DialogDescription>{description||'Tu mundo, a tu manera.'}</DialogDescription>{children}<DialogClose disabled={closeDisabled} className="icon-button modal-close" aria-label="Cerrar"><X size={18}/></DialogClose></DialogContent></Dialog>;}
+export function Confirm({open,onOpen,title,description,onConfirm}:{open:boolean;onOpen:(v:boolean)=>void;title:string;description:string;onConfirm:()=>void}){return <AlertDialog open={open} onOpenChange={onOpen}><AlertDialogContent className="itaca-dialog"><AlertDialogTitle>{title}</AlertDialogTitle><AlertDialogDescription>{description}</AlertDialogDescription><AlertDialogFooter><AlertDialogCancel className="btn secondary">Cancelar</AlertDialogCancel><AlertDialogAction className="btn danger" onClick={onConfirm}>Confirmar</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>;}
+export function Tip({label,children}:{label:string;children:ReactNode}){return <Tooltip><TooltipTrigger asChild>{children}</TooltipTrigger><TooltipContent side="right">{label}</TooltipContent></Tooltip>;}
+export function ViewHeading({eyebrow,title,description,action}:{eyebrow:string;title:string;description?:string;action?:ReactNode}){return <header className="view-heading"><div><div className="eyebrow">{eyebrow}</div><h1>{title}</h1>{description&&<p>{description}</p>}</div>{action}</header>;}
+export function Empty({title,text,action,onClick}:{title:string;text:string;action?:string;onClick?:()=>void}){return <div className="empty-space"><span className="empty-mark">✧</span><h3>{title}</h3><p>{text}</p>{action&&<button className="btn secondary" onClick={onClick}><Plus size={16}/>{action}</button>}</div>;}
+export function Go({children,onClick}:{children:ReactNode;onClick:()=>void}){return <button className="text-link" onClick={onClick}>{children}<ArrowUpRight size={16}/></button>;}
+export const formatDate=(date:string)=>date?new Date(date.includes('T')?date:date+'T12:00:00').toLocaleDateString('es-PE',{day:'numeric',month:'short'}):'Sin fecha';
+export const timeLabel=(seconds:number)=>`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;
+export const colors=['#9ac9b8','#9bbdda','#d7bd8d','#c0b7c9','#abc392','#d1a492'];

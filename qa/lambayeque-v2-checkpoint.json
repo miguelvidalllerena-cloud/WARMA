@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-04",
+  "branch": "warma-lambayeque-v2",
+  "feature_commit": "5e8930c",
+  "build": "PASS (vinext client/RSC/SSR; no app code changes since build)",
+  "automated_checks": [
+    {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": "node scripts/verify-warma.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "WARMA verified: legacy backups and drafts preserved, local export roundtrip, clean reset defaults, paused timers, controlled reflection routes, finite closed knot geometry, stable PWA identity.\n"
+    },
+    {
+      "command": "node scripts/verify-onboarding.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS: old backup/draft compatibility; returning users preserved; 96 optional preference combinations; late-hour duration; six instruments blocked; real submit callback consent, duplicate guard, storage failure and JSON roundtrip; consent UI and preference controls. Native browser/IndexedDB not simulated as real QA.\n"
+    },
+    {
+      "command": "node scripts/verify-navigation.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS: Inicio ↔ Camino / Espejo / Bitácora / Mi jardín, Back, Forward, route reload, empty hash and direct hash changes (production callbacks; simulated browser).\n"
+    },
+    {
+      "command": "node scripts/verify-focus-duration.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS: visible recommended durations including 1 minute; all presets; custom duration; empty, fractional, invalid and out-of-range values cannot start a session (production component).\n"
+    },
+    {
+      "command": "node scripts/verify-copy.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS: Spanish singular/plural (0, 1, 2, 21), quality labels, and legacy English section headings.\n"
+    },
+    {
+      "command": "node scripts/verify-pwa.mjs dist/client/sw.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "Production precache paths: 30\nPASS: cache install, activation, network navigation, offline navigation, cached asset, private-route exclusions, cache readiness.\n"
+    }
+  ],
+  "runtime": {
+    "status": "BLOCKED_BY_ENVIRONMENT",
+    "command": "npm run start",
+    "error": "Wrangler 4.92.0: uv_interface_addresses returned Unknown system error 1",
+    "browser_qa": "NOT_VALIDATED; previous Work browser security block, not retried"
+  },
+  "metrics": {
+    "scope": "all JS files in dist/client, including SW; not measured initial network transfer",
+    "js_files": 10,
+    "js_bytes": 829623,
+    "js_gzip_bytes": 248627,
+    "css_bytes": 244077,
+    "total_client_bytes": 1212355
+  },
+  "production": "unchanged"
+}

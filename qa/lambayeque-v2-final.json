@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-05T01:11:44.729Z",
+  "branch": "warma-lambayeque-v2",
+  "scope": "Native Node Web Crypto; real callbacks with deterministic adapters. No browser/device certification.",
+  "checks": [
+    {
+      "name": "types",
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "exit": 0,
+      "result": "PASS",
+      "output": ""
+    },
+    {
+      "name": "warma",
+      "command": "node scripts/verify-warma.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "WARMA verified: legacy backups and drafts preserved, local export roundtrip, clean reset defaults, paused timers, controlled reflection routes, finite closed knot geometry, stable PWA identity.\n"
+    },
+    {
+      "name": "onboarding",
+      "command": "node scripts/verify-onboarding.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: old backup/draft compatibility; returning users preserved; 96 optional preference combinations; late-hour duration; six instruments blocked; real submit callback consent, duplicate guard, storage failure and JSON roundtrip; consent UI and preference controls. Native browser/IndexedDB not simulated as real QA.\n"
+    },
+    {
+      "name": "navigation",
+      "command": "node scripts/verify-navigation.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: Inicio ↔ Camino / Espejo / Bitácora / Mi jardín, Back, Forward, route reload, empty hash and direct hash changes (production callbacks; simulated browser).\n"
+    },
+    {
+      "name": "focus-duration",
+      "command": "node scripts/verify-focus-duration.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: visible recommended durations including 1 minute; all presets; custom duration; empty, fractional, invalid and out-of-range values cannot start a session (production component).\n"
+    },
+    {
+      "name": "copy",
+      "command": "node scripts/verify-copy.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: Spanish singular/plural (0, 1, 2, 21), quality labels, and legacy English section headings.\n"
+    },
+    {
+      "name": "psychometrics",
+      "command": "node scripts/verify-psychometrics.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: 14–70 reference scoring and 70 single-item variations; reverse/mean synthetic fixture; missing, unknown, fractional and out-of-range rejection; 14-item progress and cursor; version isolation; six permission gates and repository blocks; forged result imports rejected; contextual review gate; old backup compatibility; explainable preferences and daily precedence; no new network transport. No clinical or native-browser validation claimed.\n"
+    },
+    {
+      "name": "onboarding-flow",
+      "command": "node scripts/verify-onboarding-flow.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: real callbacks and existing IDB transaction code with deterministic adapter; consent and stale-click guards; save/resume after module reload; Back and optional choices; failure retains data; duplicate submit; discard only draft; no points/timers; known five-minute entry; serial writes and metadata-only broadcast; blocked item preview and no answer controls; semantic/focus targets and CSS constraints at four widths. Native IndexedDB, visual responsive and real keyboard remain unvalidated by this adapter.\n"
+    },
+    {
+      "name": "onboarding-motion",
+      "command": "node scripts/verify-onboarding-motion.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual knot Canvas renderer with finite coordinates, load-dependent geometry, DPR capped at 1.35; reduced motion schedules no animation; one RAF loop; hidden-tab suspension; listener/observer/frame cleanup; missing context safe. Synthetic Canvas adapter, not a GPU/device or screenshot test.\n"
+    },
+    {
+      "name": "pss10",
+      "command": "node scripts/verify-pss10.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: official PSS-10 arithmetic 0–40; reversals 4/5/7/8; 50 single-item variations and 121 missing-pattern fixtures; one/two omissions prorated without rounding; three omissions blocked; multiple marks missing; invalid values/versions/forged scores rejected; progress, first-record history and permission/content gates; legacy snapshots preserved. Synthetic answers only; no licensed administration or native browser claimed.\n"
+    },
+    {
+      "name": "pss10-persistence",
+      "command": "node scripts/verify-pss10-persistence.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual PSS repository and existing transactions with deterministic IDB adapter; real permission block prevents writes; synthetic authorization fixture tests start/double start, zero answer, cursor/resume, quota rollback, invalid values, <8 completion denial, proration, duplicate finish, result reload/JSON roundtrip, forged total rejection and draft-only discard. Existing journals/seed/events/timers preserved; native IDB/legal administration not claimed.\n"
+    },
+    {
+      "name": "pss10-ui",
+      "command": "node scripts/verify-pss10-ui.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: production evaluation component with controlled React hooks; pending permissions disable collection even with injected synthetic content; 10-slot bounds and progress; inert draft discard; synthetic authorized branch verifies consent, double-click guards, value 0, unknown label, omission and minimum eight answers, first-record history and no clinical labels. No real DOM/keyboard/administration claimed.\n"
+    },
+    {
+      "name": "crypto",
+      "command": "node scripts/verify-crypto.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: native Web Crypto AES-256-GCM; Unicode/empty/2 MB; PBKDF2-SHA256 600000; nonextractable key; random 96-bit IVs; repeated input differs; ciphertext/IV/AAD/salt tampering and wrong key rejected; strict version/domain/size limits; lock/key-loss and passphrase reopening. No real-browser persistence claimed.\n"
+    },
+    {
+      "name": "vault-persistence",
+      "command": "node scripts/verify-vault-persistence.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: native AES-GCM with real store callbacks + serial deterministic IDB transactions; legacy migration/verification/acknowledgement; quota rollback; no plaintext backup when protected; lock/reopen/wrong phrase/tamper/key-loss; encrypted and legacy import; per-write IV; stale backup and two-store CAS preserve edits. Browser IDB crash durability/locking and physical downloads remain unverified.\n"
+    },
+    {
+      "name": "vault-ui",
+      "command": "node scripts/verify-vault-ui.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual activation callbacks, matching phrase, double-submit protection, pre-activation backup, both confirmations, cleared password inputs and explicit lock; root renders only gate/toaster while locked; CSS focus/overflow/reduced-motion constraints. Controlled React hooks, not native keyboard or visual QA.\n"
+    },
+    {
+      "name": "audio-lifecycle",
+      "command": "node scripts/verify-audio-lifecycle.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual ambient/PauseAudio callbacks with deterministic AudioContext fixture; mute suspends, stale resume cannot unmute, one context per double activation, pause/exit/hidden-tab/unmount close contexts and remove listeners. Real audio/browser playback unverified.\n"
+    },
+    {
+      "name": "breathing-lifecycle",
+      "command": "node scripts/verify-breathing-lifecycle.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual Respirar effects with deterministic clock/hooks; one interval, pause/resume, hidden-tab exclusion, completion once, reopen resets, stale save cannot mark a new session, early exit does not fabricate completion, timer/vibration cleanup. Native browser/audio timing unverified.\n"
+    },
+    {
+      "name": "mirror",
+      "command": "node scripts/verify-mirror.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: real request/route/provider/client functions with synthetic fetch; consent/strict minimization/origin; no config no calls; mandatory limiter; provider-change; OpenAI/Anthropic DTOs; no-store; 700-token bounds; JSON/content validation; one 429 retry; cancellation/deadline; local/support fallbacks. No external API call, actual model quality or live limiter validated.\n"
+    },
+    {
+      "name": "mirror-ui",
+      "command": "node scripts/verify-mirror-ui.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: actual Espejo component with controlled hooks; unavailable leaves local routes; per-send consent, frozen payload, double-click guard, provider disclosure, no auto-save, cancellation/late response/unmount and human-support without transmission. No native modal/keyboard/model quality claimed.\n"
+    },
+    {
+      "name": "offline-readiness",
+      "command": "node scripts/verify-offline-readiness.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: readiness callback/root effect, no optimistic register state; controlled port/cache responses, timeout, versions/assets/controller changes, offline update, events/disposal. Not a native browser test.\n"
+    },
+    {
+      "name": "pwa-metadata",
+      "command": "node scripts/verify-pwa-metadata.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: manifest scope/install metadata, local PNG dimensions, maskable declaration, Spanish self-contained fallback and version/hash seam. Installation/maskable rendering not tested natively.\n"
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exit": 0,
+      "result": "PASS",
+      "output": "\n> site-creator-vinext-starter@0.1.0 build\n> node scripts/run-framework.mjs build\n\n/usr/bin/timeout\nRunning bounded vinext build...\n\n  vinext build  (Vite 8.0.13)\n\n[1/5] analyze client references...\n\u001b[2K\rtransforming...✓ 242 modules transformed.\nrendering chunks...\n✓ built in 824ms\n[2/5] analyze server references...\n\u001b[2K\rtransforming...✓ 306 modules transformed.\nrendering chunks...\n✓ built in 518ms\n[3/5] build rsc environment...\n\u001b[2K\rtransforming...✓ 239 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 652ms\n[4/5] build client environment...\n\u001b[2K\rtransforming...✓ 2077 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 1.64s\n[5/5] build ssr environment...\n\u001b[2K\rtransforming...✓ 312 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 649ms\n\n  Route (app)\n  ┌ ? /          \n  └ λ /api/espejo\n\n  λ API  ? Unknown\n\n  ? Some routes could not be classified. vinext currently uses static analysis\n    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.\n    Automatic classification will be improved in a future release.\n\n  Build complete. Run `vinext start` to start the production server.\n\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.\n\n\n[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n"
+    },
+    {
+      "name": "prepare-pwa",
+      "command": "node scripts/prepare-pwa.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "{\"pwaAssets\":26,\"serviceWorker\":\"/workspace/sites/itaca/dist/client/sw.js\"}\n"
+    },
+    {
+      "name": "pwa",
+      "command": "node scripts/verify-pwa.mjs dist/client/sw.js",
+      "exit": 0,
+      "result": "PASS",
+      "output": "Production precache paths: 28\nPASS: SW VM install/activation, production resources/MIME, partial/invalid/mixed-version cache, port readiness, navigation/fallback, quota/storage errors, exclusions and RSC. Not native browser/offline certification.\n"
+    },
+    {
+      "name": "build-artifacts",
+      "command": "node scripts/verify-build-artifacts.mjs",
+      "exit": 0,
+      "result": "PASS",
+      "output": "PASS: build budgets {\"jsGzipBytes\":269173,\"cssBytes\":253951,\"clientBytes\":1287370}; server-only markers/private filenames absent, production SW prepared. Not a comprehensive secret/content scan or device benchmark.\n"
+    }
+  ],
+  "build": {
+    "name": "build",
+    "command": "npm run build",
+    "exit": 0,
+    "result": "PASS",
+    "output": "\n> site-creator-vinext-starter@0.1.0 build\n> node scripts/run-framework.mjs build\n\n/usr/bin/timeout\nRunning bounded vinext build...\n\n  vinext build  (Vite 8.0.13)\n\n[1/5] analyze client references...\n\u001b[2K\rtransforming...✓ 242 modules transformed.\nrendering chunks...\n✓ built in 824ms\n[2/5] analyze server references...\n\u001b[2K\rtransforming...✓ 306 modules transformed.\nrendering chunks...\n✓ built in 518ms\n[3/5] build rsc environment...\n\u001b[2K\rtransforming...✓ 239 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 652ms\n[4/5] build client environment...\n\u001b[2K\rtransforming...✓ 2077 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 1.64s\n[5/5] build ssr environment...\n\u001b[2K\rtransforming...✓ 312 modules transformed.\nrendering chunks...\ncomputing gzip size...\n✓ built in 649ms\n\n  Route (app)\n  ┌ ? /          \n  └ λ /api/espejo\n\n  λ API  ? Unknown\n\n  ? Some routes could not be classified. vinext currently uses static analysis\n    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.\n    Automatic classification will be improved in a future release.\n\n  Build complete. Run `vinext start` to start the production server.\n\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.\n\n\n[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n"
+  },
+  "pwa": {
+    "name": "pwa",
+    "command": "node scripts/verify-pwa.mjs dist/client/sw.js",
+    "exit": 0,
+    "result": "PASS",
+    "output": "Production precache paths: 28\nPASS: SW VM install/activation, production resources/MIME, partial/invalid/mixed-version cache, port readiness, navigation/fallback, quota/storage errors, exclusions and RSC. Not native browser/offline certification.\n"
+  },
+  "metrics": {
+    "kind": "On-disk build artifact, not observed network/CWV/FPS",
+    "jsFiles": 10,
+    "jsBytes": 891964,
+    "jsGzipBytes": 269173,
+    "cssBytes": 253951,
+    "clientBytes": 1287370
+  },
+  "headWhenTestsStarted": "16a1bd527d1da3cbca85a09540fd004e9156dd3b",
+  "implementationCommit": "174ff12eeed3aada9c44c98a2c89c0fbc7e7ea10",
+  "validationSummary": {
+    "checksExcludingBuildAndPrepare": 23,
+    "build": "PASS",
+    "prepare": "PASS",
+    "nativeBrowser": "NO VERIFICADO",
+    "remoteModel": "INACTIVO / NO VERIFICADO",
+    "production": "intacta",
+    "quotaWarning": "No notice observed; no balance presumed"
+  }
+}

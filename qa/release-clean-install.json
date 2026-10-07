@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-05",
+  "install": "PASS",
+  "build": "PASS",
+  "lockfileUnchanged": true,
+  "scope": "Separate source copy, no pre-existing node_modules; pinned pnpm frozen install; 628 packages reused from cache, zero downloaded; managed-linux profile; application checkout dependencies preserved. Initial staging omitted executable bits and hosting config; staging corrected before successful install/build. No application defect.",
+  "nativeBrowser": "NOT VALIDATED",
+  "warnings": "npm environment http-proxy warning; optional unsupported platform packages; see QA.md"
+}

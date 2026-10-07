@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-04",
+  "branch": "warma-lambayeque-v2",
+  "baseCommit": "06d11d63013002c4be490199107b8b45603e6502",
+  "intermediateCommit": "40e75c7",
+  "checks": [
+    {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": ""
+    },
+    {
+      "command": "node scripts/verify-warma.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "WARMA verified: legacy backups and drafts preserved, local export roundtrip, clean reset defaults, paused timers, controlled reflection routes, finite closed knot geometry, stable PWA identity."
+    },
+    {
+      "command": "node scripts/verify-onboarding.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: old backup/draft compatibility; returning users preserved; 96 optional preference combinations; late-hour duration; six instruments blocked; real submit callback consent, duplicate guard, storage failure and JSON roundtrip; consent UI and preference controls. Native browser/IndexedDB not simulated as real QA."
+    },
+    {
+      "command": "node scripts/verify-navigation.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: Inicio ↔ Camino / Espejo / Bitácora / Mi jardín, Back, Forward, route reload, empty hash and direct hash changes (production callbacks; simulated browser)."
+    },
+    {
+      "command": "node scripts/verify-focus-duration.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: visible recommended durations including 1 minute; all presets; custom duration; empty, fractional, invalid and out-of-range values cannot start a session (production component)."
+    },
+    {
+      "command": "node scripts/verify-copy.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: Spanish singular/plural (0, 1, 2, 21), quality labels, and legacy English section headings."
+    },
+    {
+      "command": "node scripts/verify-psychometrics.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: 14–70 reference scoring and 70 single-item variations; reverse/mean synthetic fixture; missing, unknown, fractional and out-of-range rejection; 14-item progress and cursor; version isolation; six permission gates and repository blocks; forged result imports rejected; contextual review gate; old backup compatibility; explainable preferences and daily precedence; no new network transport. No clinical or native-browser validation claimed."
+    },
+    {
+      "command": "node scripts/verify-onboarding-flow.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: real callbacks and existing IDB transaction code with deterministic adapter; consent and stale-click guards; save/resume after module reload; Back and optional choices; failure retains data; duplicate submit; discard only draft; no points/timers; known five-minute entry; serial writes and metadata-only broadcast; blocked item preview and no answer controls; semantic/focus targets and CSS constraints at four widths. Native IndexedDB, visual responsive and real keyboard remain unvalidated by this adapter."
+    },
+    {
+      "command": "node scripts/verify-onboarding-motion.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: actual knot Canvas renderer with finite coordinates, load-dependent geometry, DPR capped at 1.35; reduced motion schedules no animation; one RAF loop; hidden-tab suspension; listener/observer/frame cleanup; missing context safe. Synthetic Canvas adapter, not a GPU/device or screenshot test."
+    },
+    {
+      "command": "node scripts/verify-pss10.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: official PSS-10 arithmetic 0–40; reversals 4/5/7/8; 50 single-item variations and 121 missing-pattern fixtures; one/two omissions prorated without rounding; three omissions blocked; multiple marks missing; invalid values/versions/forged scores rejected; progress, first-record history and permission/content gates; legacy snapshots preserved. Synthetic answers only; no licensed administration or native browser claimed."
+    },
+    {
+      "command": "node scripts/verify-pss10-persistence.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: actual PSS repository and existing transactions with deterministic IDB adapter; real permission block prevents writes; synthetic authorization fixture tests start/double start, zero answer, cursor/resume, quota rollback, invalid values, <8 completion denial, proration, duplicate finish, result reload/JSON roundtrip, forged total rejection and draft-only discard. Existing journals/seed/events/timers preserved; native IDB/legal administration not claimed."
+    },
+    {
+      "command": "node scripts/verify-pss10-ui.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "PASS: production evaluation component with controlled React hooks; pending permissions disable collection even with injected synthetic content; 10-slot bounds and progress; inert draft discard; synthetic authorized branch verifies consent, double-click guards, value 0, unknown label, omission and minimum eight answers, first-record history and no clinical labels. No real DOM/keyboard/administration claimed."
+    },
+    {
+      "command": "node scripts/verify-pwa.mjs dist/client/sw.js",
+      "exitCode": 0,
+      "result": "PASS",
+      "output": "Production precache paths: 30\nPASS: cache install, activation, network navigation, offline navigation, cached asset, private-route exclusions, cache readiness."
+    }
+  ],
+  "legalStatus": "PENDING_PERMISSION",
+  "protectedItemsInSource": false,
+  "production": "untouched",
+  "nativeBrowserValidation": "not performed: prior environment policy block; no browser reattempt",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "result": "PASS",
+    "classification": "SERVER",
+    "client": true,
+    "rsc": true,
+    "ssr": true
+  },
+  "artifactSize": {
+    "jsFiles": 10,
+    "jsBytes": 859918,
+    "jsGzipBytes": 258407,
+    "cssBytes": 251606,
+    "clientBytes": 1250179,
+    "measurement": "on-disk build artifact; not browser traffic/FPS/CWV"
+  },
+  "protectedMaterialScan": {
+    "result": "PASS",
+    "officialItemCount": 10,
+    "textFilesInspected": 235,
+    "itemTextPrinted": false,
+    "originalDocumentsExcluded": true,
+    "questionnaireSha256": "20ddd425c10fb25825d0a2db471f3a59862b3dfd6d271cadfe3382929154931c"
+  },
+  "functionalCommit": "81173ae8e2a8478922ea055569523187c8d1183e"
+}

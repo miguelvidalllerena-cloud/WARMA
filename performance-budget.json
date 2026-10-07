@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "scope": "On-disk production client artifact; not initial network or device performance",
+  "jsGzipBytes": 300000,
+  "cssBytes": 275000,
+  "clientBytes": 1500000
+}

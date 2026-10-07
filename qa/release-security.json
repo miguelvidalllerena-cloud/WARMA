@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "scope": "Tracked source high-confidence private-key/AWS/OpenAI-key patterns; client server-only markers covered by verify-build-artifacts; no external vulnerability audit",
+  "patternMatches": 0,
+  "filesScanned": 221,
+  "limitations": "Does not prove absence of every possible credential or vulnerability. Native browser not available."
+}

@@ -1,0 +1,24 @@
+{
+  "recoveredHead": "cfcfc59a46f27666a34c415d5eadab8a703cde49",
+  "functionalCommit": "d51f70929397004ba48e0ea9832e81ef5f1e4d9d",
+  "cleanSourceInstall": true,
+  "profile": "portable (no local execution profile file)",
+  "checks": "26/26 PASS",
+  "workerConfigRegenerated": true,
+  "clientRegenerated": true,
+  "packagingDryRun": "PASS",
+  "applicationBuildBytesChangedByDeploymentHelper": false,
+  "generatedWorkerName": "warma-candidate-cfcfc59",
+  "preview_urls": true,
+  "workers_dev": false,
+  "cloudflareAuthenticationAttempted": false,
+  "cloudflareUploadAttempted": false,
+  "mainBefore": "f4da58703bb335d8d163f8e0d93c4230473b11d6",
+  "githubUpload": "BLOCKED: integration HTTP 403",
+  "githubBranchCreated": false,
+  "sourceFileExclusions": [
+    "tsconfig.tsbuildinfo",
+    "docs/itaca-documentacion.zip",
+    "docs/qa-home.jpg"
+  ]
+}

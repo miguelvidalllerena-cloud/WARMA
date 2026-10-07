@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {createTSLoader} from './test/ts-loader.mjs';
+const load=createTSLoader(),flags=load('lib/feature-flags.ts'),endpoint=load('lib/server/mirror-endpoint.ts'),pss=load('lib/pss10-instrument.ts');
+assert.deepEqual(flags.FEATURE_FLAGS,{PSS10_ENABLED:false,AI_REMOTE_ENABLED:false,CLOUD_SYNC_ENABLED:false});
+assert.equal(Object.isFrozen(flags.FEATURE_FLAGS),true);
+for(const value of [undefined,'false','TRUE','1','',true])assert.equal(flags.remoteAIEnabled({AI_REMOTE_ENABLED:value}),false);
+assert.equal(flags.remoteAIEnabled({AI_REMOTE_ENABLED:'true'}),true);
+assert.equal(flags.remoteAIEnabled({WARMA_AI_ENABLED:'true'}),false,'Retired flag cannot accidentally enable remote requests');
+assert.equal(endpoint.mirrorStatus({AI_REMOTE_ENABLED:'true'}).available,false,'Flag alone cannot bypass provider/limiter/policy');
+assert.equal(pss.pss10Availability().available,false);
+assert.equal(pss.pss10Permission.status,'PENDING_PERMISSION');
+console.log('PASS: release defaults frozen and off; strict server opt-in; legacy flag inert; provider prerequisites and PSS permission gate retained.');
