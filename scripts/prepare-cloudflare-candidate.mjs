@@ -16,6 +16,9 @@ config.name = 'warma-candidate-cfcfc59';
 if ('topLevelName' in config) config.topLevelName = config.name;
 config.preview_urls = true;
 config.workers_dev = false;
+// Keep the PWA fallback at its exact URL. Cloudflare's default HTML handling
+// redirects /offline.html to /offline; the SW correctly rejects redirects.
+config.assets.html_handling = 'none';
 config.vars = { ...config.vars, AI_REMOTE_ENABLED: 'false' };
 fs.writeFileSync(file, JSON.stringify(config, null, 2) + '\n');
 console.log('Prepared WARMA candidate version upload; production route disabled.');

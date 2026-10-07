@@ -11,4 +11,8 @@ const serverOnly=['WARMA_AI_API_KEY','WARMA_AI_LIMITER','https://api.openai.com/
 for(const file of js){const source=fs.readFileSync(file,'utf8');for(const marker of serverOnly)assert(!source.includes(marker),`Server-only marker in ${file}`);}
 for(const file of files)assert(!/PSS-10_AU2\.0_spa-ES_10OCT2024\.docx|Scoring_PSS.*\.pdf|\.env(?:\.|$)|\.dev\.vars(?:\.|$)/.test(path.basename(file)),'Private file in public build');
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');assert.match(sw,/const VERSION = 'itaca-v1-[a-f0-9]{12}'/,'Run prepare-pwa after build');
+const precache=JSON.parse(sw.match(/const PRECACHE = (\[.*?\]);/)[1]);
+assert.ok(precache.includes('/offline.html'),'The exact offline fallback must be cached');
+assert.ok(precache.every(asset=>!asset.split('/').some(part=>part.startsWith('.'))),'Cloudflare does not serve internal files such as .assetsignore');
+assert.ok(!precache.includes('/_headers')&&!precache.includes('/_redirects'),'Hosting directives are not public precache resources');
 console.log('PASS: build budgets '+JSON.stringify(metrics)+'; server-only markers/private filenames absent, production SW prepared. Not a comprehensive secret/content scan or device benchmark.');
