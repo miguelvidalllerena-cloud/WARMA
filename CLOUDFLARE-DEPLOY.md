@@ -1,6 +1,6 @@
 # WARMA — Cloudflare Workers Builds
 
-STATUS: Source prepared locally; GitHub upload BLOCKED. The GitHub integration returned HTTP 403 `Resource not accessible by integration` when attempting to create a required application-icon blob. The repository owner has push rights, but that does not grant the connected integration write access. No candidate branch or source commit was created remotely. Authorize the integration for this repository before retrying.
+STATUS: GitHub source upload CONFIRMED on 2026-10-07. Branch warma-lambayeque-v2 was created at import commit 9a8dbcc5183ea1fa44f4af8ca5d8126b8527e926. Its 228 source files and Git tree 72f801840b3d5455c62930ef59ee1fda27fd10d9 exactly match local checkpoint 77694cdee192ea07d1ea257860ed053efec884ba. Main remains f4da58703bb335d8d163f8e0d93c4230473b11d6. Build and all 26 checks passed again on 2026-10-07. Cloudflare dashboard configuration is BLOCKED in the current cloud browser: the sign-in page displays "There was a problem with verification. Please reload and try again." after one reload. No dashboard deployment, candidate URL, native-browser QA or final release has been completed.
 
 REPOSITORY: https://github.com/miguelvidalllerena-cloud/WARMA
 
@@ -50,7 +50,7 @@ Recovered branch: `warma-lambayeque-v2`.
 Recovered HEAD: `cfcfc59a46f27666a34c415d5eadab8a703cde49`.
 Functional commit: `d51f70929397004ba48e0ea9832e81ef5f1e4d9d`.
 
-The prepared branch contains the complete recovered source snapshot and adds only hosting preparation/documentation. The planned GitHub commit is a new import commit; the original history remains preserved in the recovery bundle. The previous GitHub `main` remains unchanged. Compilation cache, the historical documentation ZIP and the old screenshot are excluded from the publication set; none is needed to reconstruct the application.
+The prepared branch contains the complete recovered source snapshot and adds only hosting preparation/documentation. The GitHub source was uploaded as a new import commit; the original history remains preserved in the recovery bundle. The previous GitHub `main` remains unchanged. Compilation cache, the historical documentation ZIP and the old screenshot are excluded from the publication set; none is needed to reconstruct the application.
 
 A clean checkout must install with the frozen lockfile and generate `dist/server/wrangler.json`, `dist/server/index.js` and `dist/client` before uploading. Neither `dist` nor `node_modules` needs to be committed. Do not upload the prebuilt ZIP as the repository: Workers Builds needs the source, package manifest, lockfile, build helpers and public assets.
 
@@ -61,7 +61,7 @@ node scripts/prepare-cloudflare-candidate.mjs
 pnpm exec wrangler versions upload --config dist/server/wrangler.json --dry-run
 ```
 
-The first command executes the existing 26 checks, including build and PWA preparation. These checks do not certify native browser/device behavior. Preview QA, production release, the functional-final tag and visual redesign remain pending. No Cloudflare authentication or deployment is performed by this preparation task.
+The first command executes the existing 26 checks, including build and PWA preparation. These checks do not certify native browser/device behavior. Preview QA, production release, the functional-final tag and visual redesign remain pending. The dashboard was inspected without submitting credentials. No Wrangler OAuth/device-login retry or Cloudflare deployment was performed. The historical JSON reports retain the earlier preparation state; the current upload status is recorded above. Connecting Workers Builds in the owner's dashboard is the next deployment action.
 
 ## Official references
 
