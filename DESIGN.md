@@ -1,239 +1,198 @@
 # WARMA · Vuelve a tu centro
 
-Sistema visual original · versión 1.0 · 7 de octubre de 2026
+Sistema implementado · Centro 2.0 · 7 de octubre de 2026
 
-Este documento es la referencia de diseño de WARMA. Los cinco análisis del ZIP son una biblioteca de principios, no componentes para copiar. No se redistribuyen sus tipografías, marcas, ilustraciones ni sus DESIGN.md.
+WARMA es un espacio personal para estudiantes. Su secuencia es llegar, reconocer, reducir ruido, elegir, actuar, reflexionar y volver al centro. El nudo representa una metáfora visual: no mide ni interpreta la salud mental. Este documento describe la implementación de `app/warma-theme.css` y de los componentes existentes, no un mockup.
 
-## 1. Una presencia que deja espacio
+## Principios y referencias
 
-WARMA acompaña al estudiante a **volver a su centro**: reconocer su ritmo, elegir un paso, hacer una pausa y continuar. No mide su valor, no exige productividad permanente y no presenta metáforas visuales como mediciones psicológicas.
+Se inspeccionó la copia adjunta `awesome-design-md-main (1)(2).zip` y se leyeron completos `design-md/runwayml/DESIGN.md`, `design-md/linear.app/DESIGN.md`, `design-md/claude/DESIGN.md`, `design-md/apple/DESIGN.md` y `design-md/framer/DESIGN.md`. Son referencias de principios. Ninguno de sus archivos, marcas, fotografías, fuentes o componentes se redistribuye en WARMA.
 
-La composición tiene un centro de atención, no necesariamente un centro geométrico. Una frase, una pregunta o un gesto ocupa el primer plano. Los controles aparecen donde se necesitan; el entorno retrocede cuando se escribe, se decide o se descansa.
+| Principio estudiado | Decisión de WARMA |
+| --- | --- |
+| Runway: contenido visual protagonista, escala y encuadre | Un campo visual continuo para el nudo, con frase editorial arriba y una acción abajo |
+| Linear: precisión y controles discretos | Wayfinder lateral flotante, activo sutil y un único acento dominante |
+| Claude: humanidad y contraste editorial | Serif del dispositivo para contemplar; sans para actuar; lenguaje sereno |
+| Apple: claridad y espacio negativo | Una acción principal por estado; opciones adicionales bajo demanda |
+| Framer: composición y transición con intención | Entradas finitas, selección discreta y paisaje que aparece sin confeti |
 
-La profundidad viene de la escala, el encuadre, el contraste y las capas. No de una sombra bajo cada elemento. El nudo y el jardín son la firma de WARMA; no una decoración intercambiable por fotografías de otra marca.
+La síntesis es propia: carbón verdoso, blanco cálido y teal WARMA. No reproducir la landing page de una referencia. La escala, el encuadre y la separación del contenido crean profundidad; no una sombra detrás de cada bloque.
 
-Antes de diseñar una pantalla, completar estas tres frases:
+## Lo que cada pantalla debe aportar
 
-| Pantalla | Debe sentir | Debe entender | Acción principal |
+| Pantalla | Sentir | Entender | Acción principal |
 | --- | --- | --- | --- |
-| Inicio | Hay espacio para comenzar | Puede elegir un paso sin completar un perfil | Elegir mi siguiente paso |
-| Camino | El recorrido es posible | Una microacción basta por ahora | Añadir un paso |
-| Espejo | Puede mirar con calma | La guía propone preguntas; no diagnostica | Elegir una ruta o continuar una pregunta |
-| Bitácora | Sus palabras le pertenecen | El borrador permanece en su dispositivo | Escribir y guardar |
-| Respirar | Puede detenerse y salir | La guía es opcional; su ritmo prevalece | Seguir la guía, con salida siempre visible |
-| Concentración | Sólo necesita este momento | El tiempo puede pausarse o terminar antes | Comenzar o pausar la sesión |
-| Mi jardín | Sus gestos tienen continuidad | No pierde nada por alejarse; no hay ranking | Volver a una acción o una pausa |
-| Preferencias | Tiene control | Puede ajustar, proteger y llevar sus datos | Cambiar la preferencia que eligió |
-| Autochequeo opcional | Puede negarse sin consecuencias | No es diagnóstico y sus respuestas son locales | Responder una pregunta u omitir |
+| Inicio | Hay espacio para llegar | No tiene que resolverlo todo ahora | Elegir mi siguiente paso |
+| Camino | Un paso es posible | Las acciones y las pausas forman un recorrido | Añadir o elegir un paso |
+| Espejo | Puede mirar con calma | Son preguntas locales, no diagnóstico | Elegir una ruta y responder u omitir |
+| Bitácora | Sus palabras le pertenecen | El borrador queda en su dispositivo | Escribir y guardar |
+| Respirar | Puede parar y salir | La guía es opcional y no debe forzarla | Seguir o pausar la guía |
+| Concentración | Este espacio le pertenece | Puede pausar o terminar antes | Empezar o pausar una sesión |
+| Mi jardín | Sus gestos tienen continuidad | No pierde progreso por alejarse | Regresar a su camino |
+| Preferencias | Tiene control | Puede ajustar, proteger y llevar sus datos | Modificar la preferencia elegida |
 
-## 2. Principios aprendidos, identidad propia
-
-| Referencia inspeccionada | Principio incorporado | Expresión propia de WARMA |
-| --- | --- | --- |
-| Runway | Encuadre amplio, jerarquía editorial, contenido protagonista | Frase breve junto al nudo, sin tarjetas de marketing ni fotografía de producto |
-| Linear | Precisión, densidad útil, controles discretos, un acento | Navegación sobria y estados claros; carbón cálido con teal WARMA |
-| Claude | Calma y contraste editorial humano | Serif del sistema para contemplar, lenguaje cercano y blanco cálido |
-| Apple | Claridad, espacio negativo, pocas decisiones | Una acción principal por estado; detalles secundarios bajo demanda |
-| Framer | Transiciones que explican cambios | Aparición breve y desplazamiento pequeño; respiración y crecimiento con propósito |
-
-No copiar colores distintivos, proporciones de landing pages, logotipos, nombres de componentes ni fuentes propietarias. No reunir cinco estéticas. La unidad es WARMA: centro, ritmo, pausa, claridad, respiración, reflexión y crecimiento.
-
-## 3. Paleta semántica
-
-El modo oscuro es la experiencia principal. Las superficies son carbón, no un baño verde. El teal señala una decisión, el foco o la continuidad de una acción. No expresa que una respuesta personal sea buena o mala.
+## Paleta semántica y tokens
 
 | Token | Valor | Uso |
 | --- | --- | --- |
-| `--warma-canvas` | `#101211` | Fondo principal, sin negro absoluto obligatorio |
-| `--warma-surface` | `#181b19` | Campos y grupos interactivos |
-| `--warma-raised` | `#202522` | Diálogos y menús |
-| `--warma-ink` | `#f3f1e9` | Títulos y contenido esencial |
-| `--warma-text` | `#cccfc9` | Cuerpo y controles secundarios |
-| `--warma-muted` | `#a1aaa3` | Ayuda, microcopy y contexto |
-| `--warma-line` | `#363e38` | Separadores y bordes de controles |
-| `--warma-accent` | `#a1d7c2` | Acción principal, selección y centro |
+| `--warma-canvas` | `#101211` | Fondo continuo |
+| `--warma-surface` | `#181b19` | Campos y superficies de interacción |
+| `--warma-raised` | `#202522` | Menús y diálogos |
+| `--warma-ink` | `#f3f1e9` | Titulares y contenido principal |
+| `--warma-text` | `#cccfc9` | Cuerpo y controles |
+| `--warma-muted` | `#a1aaa3` | Ayuda y contexto |
+| `--warma-line` | `#363e38` | Separación discreta, no borde esencial de un campo |
+| `--input` | `#69766c` | Borde de campos |
+| `--warma-accent` | `#a1d7c2` | Acción principal y selección |
 | `--warma-on-accent` | `#14281f` | Texto sobre el acento |
-| `--warma-accent-soft` | `#a1d7c214` | Fondo de una selección |
-| `--warma-focus` | `#b8ead6` | Anillo de foco |
-| `--warma-warning` | `#e4c391` | Aviso que necesita atención |
-| `--warma-error` | `#eab2a7` | Error real, con texto y posibilidad de recuperación |
+| `--warma-accent-soft` | `#a1d7c214` | Fondo de selección |
+| `--warma-focus` | `#b8ead6` | Foco de teclado |
+| `--warma-warning` | `#e4c391` | Aviso factual |
+| `--warma-error` | `#eab2a7` | Error o borrado, siempre con texto |
 
-Los colores de proyectos existentes conservan su función de identificación. No se convierten en colores de marca secundarios. No colorear todo el texto de verde. Los estados `Ligera / Intermedia / Alta` usan el mismo tratamiento neutro; la selección se reconoce también por borde, forma y estado accesible.
+`--warma-space-{1,2,3,4,6,8,12}` define .25, .5, .75, 1, 1.5, 2 y 3 rem. Controles: radio .5 rem. Superficie elevada: 1 rem. `--warma-ease: cubic-bezier(.22,1,.36,1)`, `--warma-motion-fast: 160ms`, `--warma-motion-enter: 640ms`.
 
-Los pares principales del modo oscuro superan 4.5:1 para texto normal. Verificar los colores calculados de cada estado; una opacidad heredada puede destruir el contraste aunque el token aislado sea correcto. Bordes esenciales y focos deben distinguirse del fondo, también sin color.
+Los colores principales de texto tienen contraste superior a 4.5:1 sobre las superficies indicadas. Esto no certifica todos los estados de todos los componentes: se debe comprobar el color calculado, la opacidad y el fondo efectivos. Las respuestas personales no usan rojo/verde ni categorías de bueno/malo. Colores existentes de proyectos y arte conservan su función; no son nuevos acentos de la marca.
 
-## 4. Tokens y escala
+## Tipografía
 
-Fuente de implementación: `app/warma-theme.css`, importada después de las hojas existentes. Esta capa cambia presentación, no las máquinas de estado ni el almacenamiento. Al añadir una vista, usar estos tokens en vez de añadir hexadecimales distintos.
+No se descargan ni empaquetan fuentes nuevas.
 
-```css
-:root {
-  --warma-canvas: #101211;
-  --warma-surface: #181b19;
-  --warma-raised: #202522;
-  --warma-ink: #f3f1e9;
-  --warma-text: #cccfc9;
-  --warma-muted: #a1aaa3;
-  --warma-line: #363e38;
-  --warma-accent: #a1d7c2;
-  --warma-on-accent: #14281f;
-  --warma-focus: #b8ead6;
-  --warma-space-1: .25rem;
-  --warma-space-2: .5rem;
-  --warma-space-3: .75rem;
-  --warma-space-4: 1rem;
-  --warma-space-6: 1.5rem;
-  --warma-space-8: 2rem;
-  --warma-space-12: 3rem;
-  --warma-radius-control: .5rem;
-  --warma-radius-surface: 1rem;
-  --warma-ease: cubic-bezier(.22, 1, .36, 1);
-  --warma-motion-fast: 160ms;
-  --warma-motion-enter: 360ms;
-}
+- Display: `'Iowan Old Style','Palatino Linotype','Book Antiqua',Georgia,serif`.
+- Interfaz y lectura: `system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif`.
+- Microdatos reales: `ui-monospace,'SFMono-Regular',Consolas,'Liberation Mono',monospace`.
+
+La serif diferencia contemplación de operación. Los controles permanecen en sans. Mono se reserva para semillas y referencias reales; el tiempo de Concentración usa sans con cifras tabulares.
+
+| Uso implementado | Desktop | Mobile |
+| --- | --- | --- |
+| Inicio, «Vuelve a» | `clamp(3.75rem,6.7vw,6.5rem)` | `clamp(2.75rem,12vw,3.5rem)` |
+| Inicio, «tu centro.» | `clamp(6.75rem,12vw,11rem)` | `clamp(4rem,18.5vw,5rem)`; 3.9 rem bajo 360 px |
+| Título de vista | `clamp(3rem,5.2vw,5rem)` | `clamp(2.5rem,11vw,3.5rem)` |
+| Bitácora, título editable | `clamp(2rem,3.2vw,3rem)` | 2 rem |
+| Bitácora, lectura/escritura | 1.125 rem / 1.85 | 1 rem / 1.85 |
+| Respirar, indicación | `clamp(3rem,6vw,5rem)` | 3.25 rem; 2.75 rem bajo 360 px |
+| Tiempo numérico voluntario | `clamp(4rem,9vw,8rem)` | 4.75 rem |
+
+Titulares con peso 400 y tracking entre −.025 y −.055 em. No usar tracking compacto en párrafos. No fijar altura de lectura ni recortar frases largas.
+
+## Composición, grid y spacing
+
+Inicio ya no es texto a la izquierda con objeto a la derecha. `home-arrival` es una escena continua: frase asimétrica de gran escala, nudo debajo y una acción en el límite inferior. La autopercepción y las entradas secundarias están después de la llegada, en `home-reflection` y `home-journeys`.
+
+Desktop: wayfinder de 52 px separado 18 px del borde; contenido desplazado 88 px. Topbar de 72 px. Vistas con máximo 1260–1320 px y márgenes fluidos de 28–80 px. Separación de grupos de 40–96 px. Las columnas usan `minmax(0,1fr)`, no anchuras mínimas que rompan el reflow.
+
+Inicio: escena de 1100 × 650 px medida por el anclaje existente del canvas. No se modifica el renderer ni el significado de la carga percibida. Tablet reduce la escena a 900 px y el margen a 32 px. Mobile la recompone a 500 × 430 px, y 430 × 340 px bajo 360 px. El encuadre decorativo puede exceder el ancho del documento; las acciones y el texto deben caber completos.
+
+El hero mobile mide `100svh - 140px`, mínimo 540 px y máximo 750 px. La portada deja espacio para el dock. No hay scroll hijacking. Contenido secundario sigue accesible por scroll normal.
+
+Camino combina un recorrido vertical alternado y un espacio para el paso seleccionado. Los pares acción/pausa se conectan mediante una línea fina y marcadores; no tarjetas de tareas. En mobile ambos espacios se apilan en secuencia.
+
+Bitácora tiene un índice de 180 px y una hoja de escritura de hasta 790 px; en mobile la escritura aparece antes del índice. La hoja usa `#171b18` y radio 2 px, sin vidrio ni sombra. Etiquetas y cápsula del tiempo están en un `details` nativo. Modo Zen mantiene el mecanismo existente.
+
+Concentración dispone el umbral editorial y la preparación en dos columnas; mobile las apila. Al comenzar, el modo Zen conserva un campo central, cifra opcional y dos acciones. No se cambian duración, reloj ni persistencia.
+
+Mi jardín es un paisaje ancho: canvas de 570 px, texto y cristales en sus márgenes inferiores; los registros siguen en una línea discreta debajo. Mobile usa canvas de 330 px y lleva texto y cristales al flujo del documento. No se simula crecimiento: ramas y registros proceden de las acciones reales ya almacenadas.
+
+Preferencias agrupa Tu espacio, Experiencia, Accesibilidad, Notificaciones, Privacidad, Datos y PWA. La documentación está bajo demanda. No ocultar restauración, protección ni borrado.
+
+## Superficies y componentes
+
+| Componente | Tratamiento y comportamiento |
+| --- | --- |
+| Acción principal | Teal claro, texto oscuro, mínimo 48 px de altura; Inicio 56 px, mobile 52 px |
+| Acción secundaria | Transparente con borde o enlace; contraste suficiente |
+| Navegación lateral | Icono, nombre accesible y tooltip; activo con superficie tenue y marca de 3 px |
+| Navegación mobile | Dock flotante de 64 px, targets de al menos 44 × 48 px y safe area |
+| Carga percibida | Tres opciones neutras con formas y subrayado; `aria-pressed` conserva selección |
+| Campo | Etiqueta persistente, borde de campo visible; placeholder sólo como ayuda |
+| Opciones adicionales | `details/summary` nativo con foco y teclado; no un menú inventado |
+| Diálogo | Semántica, foco contenido y devolución de foco del componente existente |
+| Respirar | Diálogo casi completo: ventana menos 48 px en desktop y menos 16 px en mobile |
+| Aviso de persistencia | Sólo confirma éxito después de la operación existente |
+| Estado vacío | Explica una posibilidad; no añade datos ni logros ficticios |
+
+Hover sólo donde es posible; feedback pequeño de color y fondo. Selected añade forma y estado accesible. Disabled conserva el motivo existente. Error explica qué ocurrió; el rojo no clasifica al estudiante. Guardando evita doble envío. Offline preparado sólo se afirma con confirmación del Service Worker existente. Cifrado bloqueado retira el contenido como antes.
+
+## Navegación y accesibilidad
+
+Se conservan rutas, hash, Back/Forward, acceso directo, enlaces y el foco principal del sistema recuperado. No cambia la máquina de navegación. Los iconos conservan nombres accesibles; el menú mobile mantiene todas las herramientas.
+
+Foco visible: 2 px, offset 4 px, color `--warma-focus`. Se incluyen botones, enlaces, campos, `summary` y selecciones. No retirar etiquetas ni roles para ganar espacio. El orden de lectura sigue la secuencia del contenido; mobile usa el orden de escritura primero sin duplicar campos. La navegación deja espacio inferior a las acciones.
+
+Revisar 320, 360, 390 y 430 px con layout real. `public/docs/visual-check.html` es una página de QA que muestra WARMA en iframes con estos anchos reales y altura 844 px. No sustituye un teléfono físico, su teclado virtual o una prueba con lector de pantalla. No inspecciona almacenamiento ni captura respuestas.
+
+Usar lectores de pantalla y zoom 200 % como pruebas de dispositivo pendientes cuando no estén disponibles; no convertir un snapshot semántico en una certificación WCAG.
+
+## Motion y reduced motion
+
+| Momento | Implementación |
+| --- | --- |
+| Entrada de región | `space-arrive`: 640 ms, opacidad y 12 px; una vez |
+| Llegada del nudo | `knot-arrive`: 1300 ms, 18 px y escala .96 a 1; una vez |
+| Elección de carga | `choice-arrive`: subrayado de 240 ms |
+| Paisaje del jardín | `garden-arrive`: 900 ms, opacidad y 10 px; una vez |
+| Controles | 160 ms para color/fondo; 220 ms para transformación pequeña |
+| Respirar | La guía conserva sus ciclos, temporizador, pausa y salida; no se añade un reloj nuevo |
+
+No se añaden partículas, parallax, nuevos loops RAF ni animaciones de recompensa. La animación del mundo conserva la adaptación y fallback existentes.
+
+`prefers-reduced-motion: reduce` y la preferencia local `.warma.reduced` desactivan animación y transición. También cubren diálogos portaled, pseudo-elementos y scroll. La guía conserva texto y controles con geometría quieta; el indicador de fase no deja de funcionar. No desactivar funcionalidades ni feedback textual.
+
+## Dark mode y light mode
+
+Dark mode está implementado y es la identidad principal. Light mode **NO IMPLEMENTADO**: no hay toggle ornamental ni una inversión automática que se presente como diseño terminado. Tampoco se implementan nuevas fuentes, un renderer diferente o un sistema alternativo de rutas.
+
+## PSS-10 y privacidad
+
+`PSS10_ENABLED=false`. El onboarding y la omisión existentes siguen disponibles. La biblioteca de diseño no autoriza una escala. Sin versión documental autorizada y permisos verificables no se muestran ítems reales ni se activa el flag.
+
+La infraestructura de scoring y almacenamiento existente tiene tests con fixtures, no evidencia de administración de la escala ni autorización documental. No se inventan traducciones, documentos, resultados clínicos ni umbrales. No usar las respuestas para publicidad, analytics, clasificación o rankings.
+
+`AI_REMOTE_ENABLED=false` y `CLOUD_SYNC_ENABLED=false` se conservan. Bitácora, borradores, preferencias y autopercepción usan la persistencia local existente. Los controles de cifrado opt-in y respaldo conservan sus callbacks y garantías.
+
+## Do / don't y ejemplos
+
+| Hacer | Evitar |
+| --- | --- |
+| Una acción destacada: «Elegir mi siguiente paso» | Cinco botones principales alrededor del nudo |
+| «No tienes que resolverlo todo ahora.» | Presión para completar cuestionarios o mantener rachas |
+| Una hoja para escribir; «Más opciones» | Etiquetas, cápsula, búsqueda y herramientas con igual peso |
+| «Puedes salir cuando quieras.» | Una respiración obligatoria o una estética médica |
+| Un paisaje que crece con gestos reales | Rankings, simulación de logros o castigo por inactividad |
+| Contraste tonal y encuadre | Bordes en cada grupo, neón, vidrio y sombras repetidas |
+| Reflow y controles completos a 320 px | Recortar texto esencial para ocultar overflow |
+| Tipografía instalada en el dispositivo | Fuentes propietarias copiadas del ZIP |
+
+Ejemplo de llegada implementado:
+
+```tsx
+<h1><span className="arrival-line">Vuelve a</span>
+<span className="arrival-center">tu <em>centro.</em></span></h1>
 ```
 
-Unidad base: 4 px con raíz estándar; espacios mayores en múltiplos de 8 px. Usar `rem` para que el ajuste de texto de WARMA conserve el ritmo. No fijar la altura de un bloque de lectura ni impedir el zoom.
+Ejemplo de opciones de escritura implementado: `details.journal-options` con `summary` «Más opciones»; la acción «Guardar mi reflexión» queda fuera y siempre visible.
 
-## 5. Tipografía sin descargas
+Ejemplo de privacidad: Preferencias explica almacenamiento local y protección opcional antes de `LocalProtectionControls`; exportar y restaurar permanecen en Datos.
 
-No hay nuevas solicitudes de fuentes. No se incluyen archivos SF Pro, Copernicus, Styrene, ABC Normal ni otras fuentes de las referencias. Se usan sólo fuentes instaladas en el dispositivo y fallbacks genéricos.
+## Concordancia con el código
 
-| Familia | Pila | Papel |
+| Regla | Estado | Implementación |
 | --- | --- | --- |
-| Editorial | `Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, serif` | Frases contemplativas, títulos de vista y preguntas |
-| Interfaz | `system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif` | Cuerpo, navegación, formularios, acciones |
-| Microdatos | `ui-monospace, SFMono-Regular, Consolas, Liberation Mono, monospace` | Tiempo, numeración de recorrido y referencias técnicas reales |
+| Home como escena, una acción inicial | IMPLEMENTADA | `warma-home.tsx`, `home-arrival` |
+| Nudo protagonista sin interpretación clínica | IMPLEMENTADA | Anclaje de canvas existente, frase visible y encuadre nuevo |
+| Navegación compacta | IMPLEMENTADA | `nav-rail`, `rail-button`, `mobile-nav`; semántica existente |
+| Display, UI y paleta coherentes | IMPLEMENTADA | Tokens y reglas de `warma-theme.css` |
+| Camino como recorrido | IMPLEMENTADA | `path-terrain`, `path-tiles`, `path-selection` |
+| Bitácora como hoja privada | IMPLEMENTADA | `journal.tsx`, `writing-space`, opciones nativas |
+| Respirar como pausa inmersiva | IMPLEMENTADA | `breathing-room`, `breath-options` |
+| Concentración casi sin interfaz | IMPLEMENTADA | Setup editorial y `focus-center` en Zen |
+| Jardín como paisaje | IMPLEMENTADA | `garden-stage`, captions en el flujo mobile |
+| Preferencias por grupos | IMPLEMENTADA | `settings.tsx` |
+| Recompuesta mobile | IMPLEMENTADA | Breakpoints 1050, 767 y 359 px y altura 720 px |
+| Entradas finitas y reduced motion | IMPLEMENTADA | Keyframes, `.reduced` y media query |
+| Modo claro | NO IMPLEMENTADA | Fuera de esta versión |
+| PSS-10 documental y activación | NO IMPLEMENTADA | Gate cerrado; documentación autorizada pendiente |
+| Certificación física mobile, lector de pantalla y desconexión real | NO VERIFICADA | Se distingue del QA de Chrome y de preparación offline |
 
-| Estilo | Mobile | Desktop | Interlineado |
-| --- | --- | --- | --- |
-| Frase principal | 48–68 px | 72–112 px, fluido | 1.04 |
-| Título de vista | 36–44 px | 48–64 px | 1.12 |
-| Pregunta | 28–36 px | 36–48 px | 1.2 |
-| Subtítulo editorial | 24–28 px | 28–36 px | 1.25 |
-| Texto principal | 16 px mínimo | 16–18 px | 1.65–1.75 |
-| Control | 14–16 px | 14–16 px | 1.4 |
-| Ayuda | 13–14 px | 13–14 px | 1.6 |
-
-Usar peso 400 en serif y 400–600 en interfaz. Tracking de titulares entre −0.02 y −0.045 em, sin comprimir frases largas. Los rótulos de navegación siguen en sans; mono no es la voz de toda la experiencia. Las mayúsculas son breves y no sustituyen títulos legibles.
-
-## 6. Composición y grid
-
-Desktop: contenido máximo 1440 px, margen fluido 32–80 px, navegación lateral estable. Inicio combina una columna editorial y un campo visual más amplio; no fuerza una simetría de dashboard. El nudo conserva su anclaje medido por el componente existente.
-
-Tablet: dos columnas sólo mientras las frases y controles caben sin compresión. Formularios, lectura y onboarding pasan a una columna antes que el contenido se vuelva estrecho.
-
-Mobile: una columna, margen 20–24 px (16 px a 320 px), acción principal a ancho disponible. Navegación existente y `safe-area-inset-*` se conservan. Una escena visual no debe obligar a atravesar una pantalla vacía antes de encontrar el siguiente paso. Su altura se reduce a 320–380 px; no se ocultan herramientas.
-
-Anchuras a revisar: 320, 360, 390, 430, 768, 1024, 1366 y 1920 px. Revisar también altura pequeña, orientación horizontal y zoom 200 %. `minmax(0, 1fr)`, `min-width: 0`, wrap y textos fluidos permiten reflow. Nunca resolver un desbordamiento cortando el contenido esencial.
-
-El texto de lectura tiene un ancho recomendado de 55–70 caracteres. Preferencias separa grupos por espacio y una línea, no por una cuadrícula de tarjetas coloreadas.
-
-## 7. Superficies y componentes
-
-**Superficie base:** carbón continuo. La escena puede tener luz local suave; no hay gradiente detrás de cada sección. **Superficie de interacción:** ligeramente más clara, con borde visible. **Superficie elevada:** reservada para menús, diálogos y confirmaciones. Las sombras se limitan al diálogo sobre contenido; no expresan jerarquía por sí solas.
-
-| Componente | Regla |
-| --- | --- |
-| Acción principal | Una por estado. Acento claro, texto oscuro, mínimo 48 px de alto; verbo concreto |
-| Acción secundaria | Fondo neutro y borde; no compite con la principal |
-| Enlace de acción | Texto legible, icono opcional, área táctil de al menos 44 px |
-| Icono sin texto | Nombre accesible, foco visible, mínimo 44 × 44 px |
-| Campo de texto | Etiqueta persistente, 16 px mínimo en mobile, placeholder como ejemplo y no como única etiqueta |
-| Selección personal | Bordes y estado accesible, mismo color para todas las respuestas; sin puntuación visual ni premios |
-| Fila de recorrido | Número pequeño, título claro, ayuda breve; separación con línea y espacio |
-| Diálogo | Nombre y descripción, foco contenido y regreso al disparador; altura limitada con scroll interno |
-| Progreso | Discreto, descriptivo y accesible; no premia respuestas sensibles |
-| Mensaje de guardado | Cerca de la acción o toast corto; no proclamar éxito antes de persistir |
-| Estado vacío | Explica lo que puede suceder y propone un paso; no simula datos ni progreso |
-
-No cambiar roles, etiquetas, lectura, handlers ni gestión de foco para lograr un efecto visual. El orden visual y el del DOM deben coincidir.
-
-## 8. Estados
-
-- **Reposo:** texto claro, sin halo ni movimiento permanente.
-- **Hover:** cambio pequeño de fondo o borde; sólo en dispositivos que pueden hacer hover.
-- **Foco:** anillo de 2 px con separación de 4 px; nunca se elimina sin una alternativa visible.
-- **Seleccionado:** borde y superficie suave, más `aria-pressed`, `aria-checked` o el estado nativo existente.
-- **Guardando:** conserva los datos visibles y evita doble envío. No reemplaza la pantalla por una animación.
-- **Error:** explica qué falló y qué se conserva; propone reintentar cuando sea posible. Sin diagnóstico ni alarmismo.
-- **Sin conexión:** mensaje factual. Sólo afirmar disponibilidad offline cuando el Service Worker confirme su precache completo.
-- **Bloqueado:** el cifrado retira el contenido de las vistas; la estética no cambia esta garantía.
-- **No disponible:** explicación breve y otra acción útil. Los detalles legales y técnicos se pueden consultar bajo demanda.
-
-## 9. Navegación y decisiones
-
-Conservar rutas, hash, Back/Forward y accesos directos. Cada pantalla tiene un `h1`; el cambio de región mantiene el foco de contenido del sistema existente. La navegación y la pausa permanecen disponibles sin cubrir el área de escritura o los botones inferiores.
-
-La navegación no es una lista de logros ni un panel empresarial. Las herramientas adicionales quedan en el menú existente. En mobile, no inventar un segundo sistema de rutas.
-
-El onboarding es opcional desde el primer estado. **«Omitir por ahora»** siempre permite entrar sin responder. La omisión guarda únicamente que la bienvenida se cerró; no crea respuestas, consentimiento psicométrico ni resultados. Se puede retomar voluntariamente desde Inicio y Preferencias.
-
-## 10. Autochequeo PSS-10
-
-La UI está integrada en el mismo sistema: una pregunta por pantalla, espacio suficiente, respuesta mediante controles accesibles, progreso pequeño, atrás, omisión y salida. No hay colores de respuesta buena/mala ni recompensas por completar.
-
-Antes de responder, explicar voluntariedad, periodo de referencia, almacenamiento local y que no es diagnóstico. Mostrar instrucciones e ítems únicamente si se ha documentado y verificado la versión autorizada. No sustituirlos por una traducción propia.
-
-El resultado describe el registro, no clasifica al estudiante. No usar categorías de estrés clínico ni umbrales diagnósticos. Proponer elegir un paso, respirar o escribir, sin prescribir tratamiento. Repetir es una decisión explícita; los registros pueden borrarse. El cifrado opt-in ya existente protege el estado completo.
-
-`PSS10_ENABLED` permanece **false** mientras falten texto autorizado y permisos verificables. El ZIP de diseño no es una licencia de la escala. Las pruebas con fixtures sintéticos comprueban el mecanismo; no certifican una administración real ni el acceso a la red en un dispositivo.
-
-## 11. Motion: dar forma al ritmo
-
-| Situación | Movimiento | Límite |
-| --- | --- | --- |
-| Cambio de región | Aparición y desplazamiento vertical pequeño | 360 ms, máximo 8 px |
-| Control | Cambio de fondo, borde o color | 160 ms; sin salto de layout |
-| Pregunta nueva | Entrada breve y foco en el encabezado | Sin retrasar teclado ni exigir terminar la animación |
-| Respiración | Guía existente de expansión y contracción | Sólo durante la pausa, detención y salida disponibles |
-| Claridad o jardín | Transición del estado después de una acción real | Sin rachas, castigos, parpadeos ni confeti |
-| Reduced motion | Estado final inmediato | Sin desplazamiento, loops ni respiración visual forzada |
-
-No scroll hijacking, parallax, cursores de seguimiento, blur animado de pantalla completa ni videos externos de autoplay. No añadir un nuevo loop al nudo. Conservar calidad automática y fallback Esencial. Las animaciones decorativas no modifican timers ni eventos de actividad.
-
-`prefers-reduced-motion` y la preferencia de WARMA son equivalentes para la presentación. La animación se retira también de los diálogos portados fuera del contenedor principal. El tiempo y los controles siguen funcionando.
-
-## 12. Accesibilidad y rendimiento
-
-Contraste AA; foco visible; objetivos táctiles ≥44 px; texto escalable; navegación con Tab, Shift+Tab, flechas en radios y Enter/Espacio en acciones. Los errores, guardados y cambios importantes se anuncian con los mecanismos accesibles existentes, sin convertir cada tick del temporizador en un anuncio.
-
-Los mensajes esenciales existen como texto, no sólo en canvas, color, posición o iconos. Mantener las metáforas etiquetadas. El jardín no revela el contenido privado de la Bitácora. La PSS-10 no es una prueba de crisis y no infiere riesgo a partir de un puntaje.
-
-Sin nuevas fuentes, librerías de motion, videos ni trackers. Preferir CSS y los componentes actuales. No aumentar carga de GPU para compensar una composición débil. Medir el build y verificar visualmente; no llamar Lighthouse a una estimación del tamaño de los archivos.
-
-## 13. Light mode
-
-No se incorpora un toggle de tema en este release. El oscuro es una decisión coherente y el sistema actual no tiene un tema claro completo probado. Las superficies cálidas no requieren convertir toda la app a beige.
-
-Si un contexto de lectura diurna demuestra la necesidad, implementar y probar un tema claro completo: fondo `#f3f1e9`, superficie `#e9e8df`, tinta `#1c2420`, cuerpo `#3d4840`, ayuda `#56635a`, acento `#28634f`, texto del botón `#ffffff`. No activar un tema parcial con campos, diálogos o gráficos ilegibles. Estos valores son una dirección futura, no una funcionalidad publicada.
-
-## 14. Do / Don't
-
-| Sí | No |
-| --- | --- |
-| Una frase y una acción claras | Cinco llamadas principales simultáneas |
-| Nudo y jardín como identidad | Recursos prestados para aparentar otra marca |
-| Teal para decisiones y continuidad | Verde en todas las superficies o valoración de respuestas |
-| Serif para contemplar, sans para actuar | Mono en todo el texto o fuentes propietarias distribuidas |
-| Separar grupos con aire y líneas | Tarjetas, sombras y gradientes repetidos |
-| Explicar privacidad de manera breve | Jargon clínico o legal que sustituye la acción del estudiante |
-| Detalles científicos bajo demanda | Presentar baremos no documentados o datos de investigación como perfil individual |
-| Movimiento con propósito y salida | Loops, animaciones de premio o scroll obligatorio |
-| Estados vacíos honestos | Métricas, testimonios y progresos inventados |
-
-## 15. Ejemplos
-
-**Inicio:** una frase grande «Vuelve a tu centro.», dos líneas de ayuda, check-in neutro opcional y «Elegir mi siguiente paso». El nudo tiene espacio propio y una explicación corta. Los accesos a pausar, organizar y escribir son secundarios.
-
-**Bitácora:** título editorial y área amplia de escritura. Los controles de etiquetas, cápsula y guardado aparecen junto al contenido; la privacidad no se expresa con un candado que prometa cifrado antes de activarlo.
-
-**Autochequeo:** «Un momento para observarte». Explicación breve, «Comenzar» cuando esté autorizado y «Omitir por ahora». Una pregunta con cinco opciones neutrales; progreso pequeño. En el resultado: «Tu registro refleja cómo percibiste determinadas situaciones durante el periodo consultado. No es un diagnóstico». Después, una invitación a elegir cómo continuar.
-
-**Error de guardado:** mantener las respuestas y mostrar «No se pudo guardar. Tus cambios siguen en esta pantalla; puedes reintentar». No usar un resultado de éxito si la escritura local falló.
-
-## 16. Límites del cambio
-
-No sustituir routing, IndexedDB, criptografía, Service Worker, scoring, feature flags, timers, endpoint de Espejo ni fallbacks mediante CSS o rediseño. La corrección PWA previa se limita al empaquetado de recursos y la configuración de assets Cloudflare. Las adiciones al onboarding utilizan las transacciones locales existentes y conservan snapshots antiguos mediante valores por defecto.
-
-El release requiere build, tests y QA real, con evidencias separadas de lo pendiente. Este documento describe el sistema y su implementación; no declara por sí solo que la app esté certificada, que la escala esté autorizada ni que producción haya sido publicada.
+La evidencia de regresión y las capturas de la preview de Cloudflare se entregan por separado, vinculadas a su commit. Un build que pasa no demuestra por sí solo calidad visual ni certifica las pruebas no observadas.
