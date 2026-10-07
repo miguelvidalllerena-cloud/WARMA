@@ -36,3 +36,16 @@ Fuente primaria de permisos y ausencia de puntos de corte: [Laboratorio de Cohen
 El cifrado local opcional no concede derechos de administración/distribución. No se incorporó contenido protegido, proveedor ni flags autorizados. El bloqueo legal y el límite de población siguen intactos.
 
 Checkpoint07 conserva todos los bloqueos. Endpoint /api/espejo es de reflexión opcional, no entrega instrumentos y no permite incluirlos en su contrato. Readiness PWA no acredita permiso de almacenamiento offline de ítems; éstos no existen en precache/código. No hubo contacto a terceros, acuerdo nuevo ni permiso activado.
+
+
+## Continuación y onboarding — 2026-10-07
+
+Se integró el módulo en el nuevo sistema visual de WARMA: introducción breve, preguntas de una en una en la rama autorizada, progreso accesible, omisión, resultado sin categorías clínicas, repetición voluntaria y borrado específico de respuestas/resultados. Las transacciones y el cifrado existentes siguen guardando el estado completo; no se agregó ningún endpoint ni transmisión de estas respuestas.
+
+En esta continuación sólo se adjuntaron el ZIP de referencias visuales y el texto de misión. No se aportaron nuevamente el DOCX/PDF protegidos ni un acuerdo de autorización. Los hashes y metadatos previos se conservan como evidencia histórica; no sustituyen el cotejo del texto original ni una licencia.
+
+Estado del release: `PSS10_ENABLED=false`. Los fixtures de pruebas son sintéticos y no contienen ítems ni etiquetas oficiales. El scoring existente se conserva: 0–40, inversión de los ítems 4/5/7/8 y protocolo de faltantes del paquete registrado. Pruebas adicionales cubren repetición explícita y borrado persistente sin afectar Bitácora ni datos académicos.
+
+Para activar faltan: el acuerdo verificable de uso electrónico aplicable al proyecto y su población; su alcance sobre distribución pública de ítems en GitHub/bundles y caché offline; el ejemplar autorizado de la versión es-ES y su manual para cotejar redacción, instrucciones y respuestas; y el QA real del instrumento habilitado (teclado/lector de pantalla, persistencia/cifrado, offline y captura de tráfico sin respuestas fuera del dispositivo). Si los derechos no permiten distribución pública, el contenido no puede añadirse al bundle público; no se creará un proveedor remoto como atajo sin autorización del usuario.
+
+El resultado permanece separado de los resultados académicos históricos, de los rankings y de los logros. No se introducen baremos, diagnósticos, predicciones psicológicas ni inferencias de crisis a partir de la puntuación.

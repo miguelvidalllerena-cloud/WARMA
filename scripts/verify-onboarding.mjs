@@ -15,13 +15,13 @@ function load(file){
  return mod.exports;
 }
 const store=load('lib/itaca-store.ts'),model=load('lib/warma-onboarding.ts'),catalog=load('lib/warma-instruments.ts');
-const old=store.blankState(27);delete old.onboarding;
+const old=store.blankState(27);delete old.onboarding;delete old.onboardingDismissed;
 old.journal=[{id:'private',title:'Mi registro',body:'Contenido local anterior',tags:[],createdAt:'2026-09-20T10:00:00Z'}];
 old.journalDraft={title:'Sin terminar',body:'Conservar',tags:'ideas'};
 const restored=store.stateSchema.parse(old);
-assert.equal(restored.onboarding,null);assert.deepEqual(restored.journal,old.journal);assert.deepEqual(restored.journalDraft,old.journalDraft);
+assert.equal(restored.onboarding,null);assert.equal(restored.onboardingDismissed,false);assert.deepEqual(restored.journal,old.journal);assert.deepEqual(restored.journalDraft,old.journalDraft);
 assert.equal(model.shouldOfferOnboarding(restored),false);
-assert.equal(model.shouldOfferOnboarding(store.blankState()),true);
+assert.equal(model.shouldOfferOnboarding(store.blankState()),true);assert.equal(model.shouldOfferOnboarding({...store.blankState(),onboardingDismissed:true}),false);
 for(const collection of ['missions','projects','journal','subjects','knowledge','dreams','games','sessions','events']){
  const existing=store.blankState();existing[collection].push({id:'existing'});
  assert.equal(model.shouldOfferOnboarding(existing),false,`Do not interrupt a returning user with ${collection}`);

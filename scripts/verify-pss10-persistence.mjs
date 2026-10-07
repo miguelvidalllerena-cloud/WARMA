@@ -48,6 +48,10 @@ try{
  await assert.rejects(store.importJSON({size:invalidJSON.length,text:async()=>invalidJSON}));assert.equal(JSON.stringify(idb.record),previous);
  await repo.beginPss10();assert.notEqual(store.getWorld().pss10.draft,null);await repo.discardPss10Draft();
  assert.equal(store.getWorld().pss10.draft,null);assert.equal(store.getWorld().pss10.results.length,1);assert.equal(store.getWorld().seed,992);
+ const kept=structuredClone(store.getWorld());await repo.deletePss10Data();
+ assert.deepEqual(store.getWorld().pss10,pss.emptyPss10State());
+ const clearedReload=createTSLoader(overrides)('lib/itaca-store.ts');await clearedReload.initWorld();assert.deepEqual(clearedReload.getWorld().pss10,pss.emptyPss10State());
+ for(const key of ['journal','journalDraft','assessment','onboarding','wellbeing','missions','projects','seed','events','timer'])assert.deepEqual(store.getWorld()[key],kept[key]);
  assert.ok(started);assert.deepEqual(idb.openings[0],{name:'itaca-living-world',version:1});
  for(const message of idb.messages)assert.deepEqual(Object.keys(message),['updatedAt']);
 }finally{idb.restore();}

@@ -1,0 +1,387 @@
+/* WARMA / Centro. Original presentation system; see root DESIGN.md.
+   Loaded last to preserve the recovered layout and functional components. */
+:root, .dark {
+  color-scheme: dark;
+  --warma-canvas: #101211;
+  --warma-surface: #181b19;
+  --warma-raised: #202522;
+  --warma-ink: #f3f1e9;
+  --warma-text: #cccfc9;
+  --warma-muted: #a1aaa3;
+  --warma-line: #363e38;
+  --warma-accent: #a1d7c2;
+  --warma-on-accent: #14281f;
+  --warma-accent-soft: #a1d7c214;
+  --warma-focus: #b8ead6;
+  --warma-warning: #e4c391;
+  --warma-error: #eab2a7;
+  --warma-space-1: .25rem;
+  --warma-space-2: .5rem;
+  --warma-space-3: .75rem;
+  --warma-space-4: 1rem;
+  --warma-space-6: 1.5rem;
+  --warma-space-8: 2rem;
+  --warma-space-12: 3rem;
+  --warma-radius-control: .5rem;
+  --warma-radius-surface: 1rem;
+  --warma-ease: cubic-bezier(.22, 1, .36, 1);
+  --warma-motion-fast: 160ms;
+  --warma-motion-enter: 360ms;
+  --background: var(--warma-canvas);
+  --foreground: var(--warma-ink);
+  --card: var(--warma-surface);
+  --card-foreground: var(--warma-ink);
+  --popover: var(--warma-raised);
+  --popover-foreground: var(--warma-ink);
+  --primary: var(--warma-accent);
+  --primary-foreground: var(--warma-on-accent);
+  --secondary: var(--warma-raised);
+  --secondary-foreground: var(--warma-text);
+  --muted: var(--warma-surface);
+  --muted-foreground: var(--warma-muted);
+  --accent: var(--warma-raised);
+  --accent-foreground: var(--warma-ink);
+  --border: var(--warma-line);
+  --input: #69766c;
+  --ring: var(--warma-focus);
+  --destructive: var(--warma-error);
+  --sidebar: var(--warma-canvas);
+  --sidebar-foreground: var(--warma-muted);
+  --sidebar-primary: var(--warma-accent);
+  --sidebar-primary-foreground: var(--warma-on-accent);
+  --sidebar-accent: var(--warma-surface);
+  --sidebar-accent-foreground: var(--warma-ink);
+  --sidebar-border: var(--warma-line);
+  --sidebar-ring: var(--warma-focus);
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --mono: ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+html, body, .itaca, .warma { background: var(--warma-canvas); }
+body { color: var(--warma-ink); }
+::selection { color: var(--warma-ink); background: #a1d7c240; }
+button:focus-visible, a:focus-visible, input:focus-visible,
+textarea:focus-visible, [role=button]:focus-visible,
+label:has([role=radio]:focus-visible) {
+  outline: 2px solid var(--warma-focus);
+  outline-offset: 4px;
+}
+input::placeholder, textarea::placeholder { color: var(--warma-muted); }
+.skip-link { background: var(--warma-accent); color: var(--warma-on-accent); }
+.muted { color: var(--warma-muted); }
+
+/* Chrome recedes. The existing navigation and safe-area geometry remain. */
+.warma .topbar {
+  background: #101211f2;
+  border-color: var(--warma-line);
+  backdrop-filter: none;
+}
+.warma .wordmark { color: var(--warma-ink); letter-spacing: .2em; }
+.warma .wordmark span, .warma .top-breadcrumb { color: var(--warma-muted); }
+.warma .top-breadcrumb > b { color: var(--warma-text); font-weight: 500; }
+.warma .nav-rail {
+  background: var(--warma-canvas) !important;
+  border-color: var(--warma-line);
+  backdrop-filter: none;
+}
+.warma .brand-symbol { color: var(--warma-accent); border-color: var(--warma-line); }
+.warma .rail-button, .warma .rail-edition { color: var(--warma-muted); }
+.warma .rail-button[data-active=true], .warma .rail-button.selected {
+  color: var(--warma-accent);
+  background: var(--warma-accent-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--warma-line);
+}
+.warma .rail-divider { background: var(--warma-line); }
+.warma .pause-top, .warma .quality-pill {
+  color: var(--warma-text);
+  background: transparent;
+  border-color: var(--warma-line);
+  min-height: 44px;
+}
+.warma .profile-button { background: var(--warma-surface); color: var(--warma-text); }
+.warma .icon-button { color: var(--warma-text); }
+.warma .mobile-nav {
+  background: #101211fa;
+  border-color: var(--warma-line);
+  backdrop-filter: none;
+}
+.warma .mobile-nav button { color: var(--warma-muted); }
+.warma .mobile-nav button.active { color: var(--warma-accent); }
+
+/* Neutral controls; the accent is reserved for the decision in this state. */
+.btn, .text-link, .icon-button, .choice, .load-options > button {
+  transition: color var(--warma-motion-fast), background var(--warma-motion-fast),
+    border-color var(--warma-motion-fast);
+}
+.btn { border-radius: var(--warma-radius-control); min-height: 48px; }
+.primary, .warma .primary {
+  background: var(--warma-accent);
+  border-color: var(--warma-accent);
+  color: var(--warma-on-accent);
+  box-shadow: none;
+}
+.secondary, .warma .secondary {
+  background: var(--warma-surface);
+  border-color: var(--warma-line);
+  color: var(--warma-text);
+  box-shadow: none;
+}
+.btn:hover, .warma .btn:hover { transform: none; }
+.text-link, .warma .text-link { color: var(--warma-text); min-height: 44px; }
+.danger-text { color: var(--warma-error) !important; }
+.field-label, .warma .field-label { color: var(--warma-text); }
+input, textarea, .warma input, .warma textarea {
+  background: var(--warma-surface);
+  border-color: var(--input);
+  color: var(--warma-ink);
+  border-radius: var(--warma-radius-control);
+}
+.field-select { background: var(--warma-surface) !important; }
+.choice, .onboarding-dialog .choice {
+  color: var(--warma-text);
+  border-color: var(--input);
+  background: var(--warma-surface);
+  text-transform: none;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+}
+.choice.selected, .onboarding-dialog .choice.selected {
+  color: var(--warma-ink);
+  background: var(--warma-accent-soft);
+  border-color: var(--warma-accent);
+}
+.warma .eyebrow, .editorial-kicker, .home-overline, .scene-coordinate {
+  color: var(--warma-muted);
+  font-family: var(--sans);
+  font-size: .75rem;
+  line-height: 1.6;
+  letter-spacing: .12em;
+}
+
+/* The phrase and the living knot form one composition, without a card wall. */
+.warma-home {
+  max-width: 1440px;
+  margin-inline: auto;
+  grid-template-columns: minmax(300px, .9fr) minmax(0, 1.15fr);
+  column-gap: clamp(24px, 3vw, 48px);
+  row-gap: 32px;
+  padding: 36px clamp(32px, 4.5vw, 80px) 28px;
+}
+.home-overline { grid-column: 1 / -1; }
+.warma-intro { padding-block: 36px 28px; }
+.warma-intro h1 {
+  font-size: clamp(4.5rem, 7vw, 7rem);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  color: var(--warma-ink);
+  margin: 24px 0;
+}
+.warma-intro h1 em { color: var(--warma-accent); }
+.warma-intro > p { color: var(--warma-text); max-width: 35ch; line-height: 1.75; }
+.home-checkin { margin-top: 28px; max-width: 390px; }
+.home-checkin > span { color: var(--warma-text); font-size: .875rem; line-height: 1.6; }
+.load-options { gap: 8px; margin: 12px 0 2px; flex-wrap: wrap; }
+.load-options > button {
+  background: transparent;
+  color: var(--warma-text);
+  border-color: var(--input);
+  border-radius: 999px;
+  min-height: 44px;
+}
+.load-options > button.selected {
+  background: var(--warma-accent-soft);
+  color: var(--warma-ink);
+  border-color: var(--warma-accent);
+}
+.home-checkin > .text-link { color: var(--warma-muted); }
+.warma .warma-intro .hero-cta { margin-top: 22px; padding: 16px 22px; }
+.home-scene { min-height: 580px; }
+.warma.region-world .world-canvas { background: none; }
+.scene-coordinate { color: var(--warma-muted); }
+.knot-orbit {
+  background: #101211e6;
+  color: var(--warma-text);
+  border-color: var(--warma-line);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.knot-label {
+  background: none;
+  text-shadow: none;
+  padding-inline: 12px;
+}
+.knot-index { color: var(--warma-muted); font: .75rem/1.6 var(--mono); }
+.knot-label p { color: var(--warma-ink); font-size: 1.4rem; }
+.knot-label small { color: var(--warma-muted); }
+.home-journeys { border-color: var(--warma-line); padding-top: 24px; gap: 32px; }
+.home-journeys > button { color: var(--warma-muted); }
+.home-journeys > button:not(:last-child) { border-color: var(--warma-line); }
+.home-journeys b { color: var(--warma-ink); font-size: 1.4rem; }
+.home-journeys small, .journey-number { color: var(--warma-muted); }
+.warma-home-footer, .warma-home-footer > span:first-child { color: var(--warma-muted); }
+.warma .personalization-note, .warma .functional-profile { border-color: var(--warma-line); }
+.warma .personalization-note p, .warma .recommendation-explanation { color: var(--warma-muted); }
+
+/* Editorial tools. Text and work remain foreground; existing layouts stay. */
+.warma .workspace { max-width: 1440px; padding-top: 56px; }
+.warma .view-heading { margin-bottom: 40px; }
+.warma .view-heading h1 {
+  color: var(--warma-ink);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+.warma .view-heading p { color: var(--warma-text); max-width: 62ch; line-height: 1.7; }
+.warma .glass-surface { background: var(--warma-surface); border-color: var(--warma-line); box-shadow: none; }
+.warma .project-work.glass-surface { background: transparent; }
+.warma .setting-section, .warma .journal-index, .warma .journal-entry-link,
+.warma .path-composer, .warma .path-reflection, .warma .mirror-routes > button {
+  border-color: var(--warma-line);
+}
+.warma .setting-section p, .warma .switch-row small, .warma .journal-entry-link,
+.warma .mirror-note, .warma .privacy-line, .warma .mirror-conversation > p,
+.warma .path-empty p, .warma .somatic-guidance p, .warma .body-extras small,
+.warma .garden-legend p, .warma .garden-pledge { color: var(--warma-text); }
+.warma .setting-section h2, .warma .mirror-conversation h2,
+.warma .somatic-guidance h2, .warma .path-reflection h2,
+.warma .path-empty h2, .warma .garden-legend h2 { color: var(--warma-ink); }
+.warma .mirror-routes > button, .warma .somatic-map > button,
+.warma .body-extras > button { background: transparent; color: var(--warma-text); }
+.warma .somatic-map > button.active { color: var(--warma-accent); border-color: var(--warma-accent); }
+.warma .journal-editor textarea { color: var(--warma-ink); line-height: 1.8; }
+.warma .editor-footer { color: var(--warma-muted); }
+.warma .focus-quiet h1 { color: var(--warma-ink); }
+.warma .pause-floating {
+  background: var(--warma-raised);
+  color: var(--warma-text);
+  border-color: var(--warma-line);
+  box-shadow: none;
+}
+.warma .floating-timer, .peace-banner {
+  background: var(--warma-raised);
+  border-color: var(--warma-line);
+  color: var(--warma-text);
+  box-shadow: none;
+}
+
+/* Portaled surfaces are intentionally included. */
+.itaca-dialog {
+  background: var(--warma-raised);
+  color: var(--warma-ink);
+  border-color: var(--warma-line) !important;
+  border-radius: var(--warma-radius-surface) !important;
+  box-shadow: 0 24px 80px #0008;
+}
+.itaca-dialog [data-slot=dialog-description] { color: var(--warma-text); }
+.itaca-dialog .muted, .itaca-dialog .small { color: var(--warma-muted); }
+.itaca-dialog .icon-button { color: var(--warma-text); min-width: 44px; min-height: 44px; }
+.itaca-toast { background: var(--warma-raised) !important; color: var(--warma-ink) !important; border-color: var(--warma-line) !important; }
+.onboarding-dialog { background: var(--warma-surface); }
+.onboarding-dialog [data-slot=dialog-title] { color: var(--warma-text); font-family: var(--sans); }
+.onboarding-dialog [data-slot=dialog-description] { color: var(--warma-muted); }
+.onboarding-dialog .onboarding-page { gap: 20px; }
+.onboarding-dialog .onboarding-page h2 {
+  color: var(--warma-ink);
+  font: clamp(2rem, 3.5vw, 3rem)/1.2 var(--serif);
+  letter-spacing: -.025em;
+}
+.onboarding-dialog .onboarding-page p { color: var(--warma-text); line-height: 1.75; }
+.onboarding-dialog .onboarding-page .onboarding-note { color: var(--warma-muted); }
+.onboarding-dialog .onboarding-stages li { color: var(--warma-muted); border-color: var(--warma-line); }
+.onboarding-dialog .onboarding-stages li[aria-current=step] { color: var(--warma-ink); border-color: var(--warma-accent); }
+.onboarding-dialog .onboarding-principles span { color: var(--warma-text); }
+.onboarding-dialog .onboarding-privacy, .onboarding-dialog .onboarding-consent,
+.onboarding-dialog .functional-profile, .onboarding-dialog .assessment-question {
+  background: transparent;
+  border-color: var(--warma-line);
+}
+.onboarding-dialog .onboarding-consent input { width: 20px; height: 20px; accent-color: var(--warma-accent); }
+.onboarding-dialog .instrument-intro h3 { color: var(--warma-ink); font-size: 1.75rem; }
+.onboarding-dialog dt, .onboarding-dialog dd { color: var(--warma-text); }
+.onboarding-dialog .assessment-pending { color: var(--warma-text) !important; border-color: var(--warma-line); }
+.onboarding-dialog .instrument-library a { color: var(--warma-accent); }
+.onboarding-dialog .assessment-type { color: var(--warma-muted); }
+.onboarding-dialog .assessment-progress-track { background: var(--warma-line); }
+.onboarding-dialog .assessment-progress-track > span { background: var(--warma-accent); }
+.onboarding-dialog .assessment-question h4 { font: 1.75rem/1.4 var(--serif); color: var(--warma-ink); }
+.onboarding-dialog .assessment-question .choice-group { display: grid; grid-template-columns: 1fr; }
+.onboarding-dialog .assessment-question .choice { width: 100%; justify-content: flex-start; padding: 12px 16px; }
+.onboarding-dialog .assessment-question .button-row { justify-content: space-between; }
+.onboarding-dialog .pss-result { display: flex; flex-direction: column; gap: 20px; }
+.onboarding-dialog .pss-result h3 { font: 3rem/1.2 var(--serif); color: var(--warma-ink); }
+.onboarding-dialog .instrument-library summary { min-height: 44px; padding-block: 10px; line-height: 1.6; }
+.onboarding-dialog .contextual-module { border-color: var(--warma-line); }
+.onboarding-dialog .pss-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.vault-gate, .vault-shell { background: var(--warma-canvas); }
+
+@media (hover: hover) {
+  .primary:hover, .warma .primary:hover { background: #b8ead6; box-shadow: none; }
+  .secondary:hover, .warma .secondary:hover { background: var(--warma-raised); }
+  .text-link:hover, .warma .text-link:hover { color: var(--warma-ink); }
+  .load-options > button:hover { color: var(--warma-ink); background: var(--warma-surface); border-color: var(--warma-muted); }
+  .knot-orbit:hover { background: var(--warma-surface); transform: none; }
+  .home-journeys > button:hover b { color: var(--warma-accent); }
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .warma-home { grid-template-columns: minmax(270px, 1fr) minmax(0, 1fr); padding-inline: 32px; gap: 24px; }
+  .warma-intro h1 { font-size: clamp(3.5rem, 6.5vw, 4.5rem); }
+  .home-journeys { gap: 20px; }
+}
+@media (max-width: 767px) {
+  .warma .topbar { height: 72px; padding-inline: 20px; }
+  .warma-home { padding: 24px 24px 116px; row-gap: 0; }
+  .warma-intro { padding-top: 28px; }
+  .warma-intro h1 { font-size: clamp(3rem, 12vw, 4.25rem); margin: 20px 0; max-width: 10ch; }
+  .warma-intro > p { max-width: 38ch; }
+  .warma .warma-intro .hero-cta { width: 100%; min-width: 0; }
+  .home-checkin { margin-top: 24px; }
+  .load-options > button { flex: 1; padding-inline: 10px; }
+  .home-scene { height: 360px; min-height: 360px; margin-top: 20px; }
+  .orbit-reflect { top: 12px; right: 0; }
+  .orbit-grow { top: 225px; right: 0; }
+  .knot-label { bottom: -10px; padding-bottom: 0; }
+  .scene-coordinate { top: 12px; }
+  .home-journeys { margin-top: 28px; }
+  .home-journeys > button:not(:last-child) { border-right: 0; border-bottom: 1px solid var(--warma-line); }
+  .home-journeys b { font-size: 1.3rem; }
+  .warma .workspace { padding: 36px 24px 132px; }
+  .warma .view-heading h1 { font-size: clamp(2.25rem, 8vw, 2.75rem); }
+  .warma .view-heading { gap: 24px; }
+  .onboarding-dialog .assessment-question h4 { font-size: 1.5rem; }
+  .onboarding-dialog .onboarding-page h2 { font-size: 2rem; }
+  .home-overline .local-note { max-width: 12ch; text-align: right; }
+}
+@media (max-width: 359px) {
+  .warma-home, .warma .workspace { padding-inline: 16px; }
+  .warma .topbar { padding-inline: 12px; }
+  .home-overline { gap: 12px; }
+  .home-scene { height: 320px; min-height: 320px; }
+  .orbit-grow { top: 195px; }
+  .knot-orbit { font-size: .8125rem; padding: 10px 12px; }
+  .home-journeys > button { gap: 12px; }
+}
+
+/* Motion never changes timers or state. Respect system and in-app preferences. */
+.warma .main-content.travelling > .warma-home { animation-duration: var(--warma-motion-enter); }
+.warma.reduced *, .warma.reduced *::before, .warma.reduced *::after,
+:root:has(.warma.reduced) .itaca-dialog,
+:root:has(.warma.reduced) .itaca-dialog *,
+:root:has(.warma.reduced) .itaca-dialog *::before,
+:root:has(.warma.reduced) .itaca-dialog *::after,
+.onboarding-dialog[data-reduced], .onboarding-dialog[data-reduced] *,
+.itaca-dialog[data-reduced] *, .onboarding-still * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto !important; }
+  .warma *, .warma *::before, .warma *::after,
+  .itaca-dialog, .itaca-dialog *, .itaca-dialog *::before, .itaca-dialog *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

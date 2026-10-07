@@ -68,3 +68,16 @@ The first command executes the existing 26 checks, including build and PWA prepa
 - https://developers.cloudflare.com/workers/ci-cd/builds/configuration/
 - https://developers.cloudflare.com/workers/ci-cd/builds/build-image/
 - https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/
+
+## Candidate verification — 2026-10-07
+
+Candidate branch source stays on `warma-lambayeque-v2`; no merge to main or production promotion.
+
+PWA packaging fix: GitHub `7d3bbca79f55966bec83172532ee0e491fd8a7b8`.
+Workers Builds candidate check: PASS, build `0b891a45-44f1-4e27-86a3-def7b268e38f`, version `7b15c443-21b3-48b5-a327-23c614834fb6`.
+
+The generated `assets.html_handling` is now `none` so `/offline.html` is served directly. Internal files such as `.assetsignore` are excluded from PWA precache. The SERVER / Cloudflare Worker architecture, root routing and Service Worker source remain intact.
+
+A separate existing Workers Builds integration for `warma` also receives branch pushes and reports failure; this is separate from the successful `warma-candidate-cfcfc59` check. No hosting connection or old Worker was changed here.
+
+Native offline opening, device installation and full responsive/device QA are still release gates. PSS-10 remains disabled until authorized source wording, usage permissions and all specified verification gates are satisfied. No credentials or protected instrument documents belong in this repository.
