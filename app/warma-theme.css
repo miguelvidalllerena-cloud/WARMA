@@ -150,7 +150,7 @@ input,textarea,.warma input,.warma textarea{background:var(--warma-surface);bord
 /* Camino is a winding, sequential field. The current step has its own space. */
 .warma-path .personalization-note{margin-bottom:40px;border:0;padding:0;max-width:55ch}
 .warma .path-composer{border:0;padding:0 0 40px;max-width:840px}
-.warma .path-composer form{gap:18px;margin-top:18px}
+.warma .path-composer form{gap:18px;margin-top:18px}.warma .path-composer .btn{white-space:nowrap;flex-shrink:0}
 .warma .path-composer input{border:0;border-bottom:1px solid var(--input);border-radius:0;background:none;font-size:1rem;padding-left:0}
 .warma .path-terrain{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:80px;margin-top:20px;background:none;padding:24px 0 56px}
 .warma .path-map-head{grid-column:1/-1;margin-bottom:48px;color:var(--warma-muted)}
@@ -184,14 +184,14 @@ input,textarea,.warma input,.warma textarea{background:var(--warma-surface);bord
 /* Bitácora is a reading and writing surface, with an understated book spine. */
 .warma .journal-view{max-width:1260px}
 .warma .journal-layout{grid-template-columns:180px minmax(0,1fr);gap:64px}
-.warma .journal-index{border:0;padding:12px 0}
+.warma .journal-index{border:0;padding:12px 0;grid-column:1;grid-row:1}
 .warma .journal-index>.btn{border:0;padding:0;width:auto;color:var(--warma-text)}
 .warma .journal-index .search-field{margin:28px 0}
 .warma .journal-index .search-field input{background:none;border:0;font-size:.8125rem}
 .warma .journal-entry-link{border:0;padding:20px 0;opacity:1;color:var(--warma-muted)}
 .warma .journal-entry-link h3{font:1.125rem/1.4 var(--serif);margin-block:8px;color:var(--warma-text)}
 .warma .journal-entry-link.active h3{color:var(--warma-accent)}
-.warma .writing-space{background:#171b18;border:0;border-radius:2px;padding:40px clamp(24px,4vw,56px);max-width:790px;min-width:0}
+.warma .writing-space{grid-column:2;grid-row:1;background:#171b18;border:0;border-radius:2px;padding:40px clamp(24px,4vw,56px);max-width:790px;min-width:0}
 .warma .writing-toolbar{margin-bottom:28px;border:0;gap:16px}
 .warma .journal-title-input{font:clamp(2rem,3.2vw,3rem)/1.25 var(--serif);background:none;border:0;padding:0;color:var(--warma-ink);height:auto;border-radius:0}
 .warma .journal-editor{font:1.125rem/1.85 var(--sans);background:none;border:0;padding:24px 0 12px;min-height:340px;width:100%;resize:vertical;border-radius:0}
@@ -388,7 +388,7 @@ input,textarea,.warma input,.warma textarea{background:var(--warma-surface);bord
  .warma .path-reflection{align-items:flex-start;flex-wrap:wrap;gap:16px;padding:24px 0}
  .warma .path-reflection>div{flex:1;min-width:0}.warma .path-reflection>.btn{margin:0}
  .warma .journey-record{flex-wrap:wrap;gap:12px}
- .warma .journal-layout{display:flex;flex-direction:column-reverse;gap:40px}
+ .warma .journal-layout{display:flex;flex-direction:column;gap:40px}
  .warma .writing-space{padding:24px 18px;max-width:none;width:100%}
  .warma .journal-title-input{font-size:2rem}.warma .journal-editor{font-size:1rem;min-height:300px}
  .warma .writing-toolbar{gap:12px;margin-bottom:20px}.warma .writing-toolbar>.eyebrow{font-size:.625rem}
